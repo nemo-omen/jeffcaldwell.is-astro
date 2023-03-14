@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import  ArticleList from '../../components/ArticleList.astro';
+
+const allBlogPosts = await getCollection('blog');
+
+// console.log(allBlogPosts);
+---
+
+<Layout title="Jeff Caldwell | Blog">
+  <main class="flow">
+    <h1>Blog</h1>
+    <ArticleList articles={allBlogPosts} />
+  </main>
+</Layout>
+
+<style>
+  main {
+    --flow-space: var(--size-6);
+  } 
+  h1 {
+    margin-bottom: var(--size-6);
+  }
+</style>

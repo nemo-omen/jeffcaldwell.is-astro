@@ -1,0 +1,23 @@
+---
+import Layout from './Layout.astro';
+
+export interface props {
+  title: string;
+}
+
+const {title} = Astro.props;
+---
+
+<Layout {title}>
+  <main class="flow">
+    <article class="flow">
+      <slot />
+    </article>
+  </main>
+</Layout>
+
+<style>
+  article {
+    margin-inline: unset;
+  }
+</style>

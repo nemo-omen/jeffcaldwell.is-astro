@@ -1,0 +1,49 @@
+---
+import { Image, getImage } from 'astro:assets';
+const { frontMatter, href, type, isFirst } = Astro.props;
+const { image, title, summary } = frontMatter;
+const feature = await import(/* @vite-ignore */`../assets/images/${image.src}.webp`);
+const { src, width, height } = feature.default;
+// console.log(feature);
+const firstClass = isFirst ? 'first' : '';
+---
+
+  <article class=`${firstClass} ${type}`>
+    <a href={href}>
+      <!--<img src={src} alt={image.alt} width={width} height={height}/>-->
+      <Image src={feature.default} alt={image.alt} />
+    </a>
+
+    <div class="preview-content">
+      <a href={href}>
+        <h2>{title}</h2>
+      </a>
+      <p>{summary} <a href={href}>Read more</a></p>
+    </div>
+  </article>
+
+<style>
+  article {
+    margin-inline: unset;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: var(--size-3);
+  }
+
+  img {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  @media(min-width: 48rem) {
+    article {
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: unset;
+      /* gap: var(--size-6); */
+    }
+    img {
+      aspect-ratio: 4 / 3;
+    }
+  }
+</style>

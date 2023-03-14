@@ -1,0 +1,15 @@
+---
+const { sectionTitle, articles } = Astro.props;
+import ArticlePreview from './ArticlePreview.astro';
+
+console.log(articles);
+---
+
+{articles.map((article) => (
+  <ArticlePreview 
+    frontMatter={article.data}
+    href={'/' + article.collection + '/' + article.slug}
+    isFirst={articles.indexOf(article) === 0 ? 'true' : '' }
+    type={article.collection}
+    />
+))}

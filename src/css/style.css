@@ -1,0 +1,238 @@
+:root {
+  
+  --width-max-content: 55rem;
+  --width-max-ui: clamp(70rem, calc(65rem + 5vw), 85rem);
+  --size--2: clamp(0.78rem, calc(0.77rem + 0.03vw), 0.80rem);
+  --size--1: clamp(0.94rem, calc(0.92rem + 0.11vw), 1.00rem);
+  --size-0: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem);
+  --size-1: clamp(1.35rem, calc(1.28rem + 0.37vw), 1.56rem);
+  --size-2: clamp(1.62rem, calc(1.50rem + 0.58vw), 1.95rem);
+  --size-3: clamp(1.94rem, calc(1.77rem + 0.87vw), 2.44rem);
+  --size-4: clamp(2.33rem, calc(2.08rem + 1.25vw), 3.05rem);
+  --size-5: clamp(2.80rem, calc(2.45rem + 1.77vw), 3.82rem);
+  --size-6: clamp(3.36rem, calc(2.87rem + 2.45vw), 4.77rem);
+  --size-7: clamp(4.03rem, calc(3.36rem + 3.36vw), 5.96rem);
+  --size-8: clamp(4.84rem, calc(3.93rem + 4.54vw), 7.45rem);
+  --size-9: clamp(5.81rem, calc(4.58rem + 6.10vw), 9.31rem);
+  --size-10: clamp(6.97rem, calc(5.34rem + 8.13vw), 11.64rem);
+
+  --default-margin: var(--size-2);
+
+  --black: #13111b;
+  --white: #f7f6f6ff;
+  --red: #D4594C;
+  --red-darker: hsl(5 61% 50%);
+  /* --yellow: #FFF13B; */
+  --yellow: #FFE319;
+  /* --magenta: #ff4683; */
+  --magenta: #FF008A;
+  --blue: #1E7E9C;
+  /* --cyan: #43C1E8; */
+  --cyan: #19E7FF;
+  --blue-lighter: hsl(182 62% 60%);
+
+  --bg: var(--black);
+  --fg: var(--white);
+  --primary: var(--magenta);
+  --accent: var(--yellow);
+  --secondary: var(--cyan);
+
+  /* Font aliases */
+  --display: 'Sunscy';
+  --serif: 'BespokeSerif';
+  --mono: 'Fira Mono';
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body{
+  font-family: var(--serif) serif;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-size: var(--size-1);
+}
+
+.header-inner,
+main,
+footer {
+  max-width: var(--width-max-ui);
+  padding: var(--size-1);
+  margin: 0 auto;
+}
+
+main {
+  margin-bottom: var(--size-6);
+}
+
+.display {
+  font-family: var(--display);
+}
+
+.sans {
+  font-family: var(--sans);
+}
+
+.serif {
+  font-family: var(--serif);
+}
+
+code {
+  font-family: var(--mono) monospace;
+}
+
+a {
+  color: currentColor;
+  transition: color 0.2s ease-in-out;
+  text-decoration: underline;
+  text-decoration-thickness: 0.3ex;
+  text-underline-offset: 0.3ex;
+  text-decoration-color: var(--secondary);
+  transition: text-underline-offset 0.2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+  text-underline-offset: 0.7ex;
+}
+
+.button,
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration-color: currentColor;
+  background-color: var(--accent);
+  color: var(--bg);
+  font-size: var(--size-2);
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding: 0.25em;
+  border: 0.3ex solid var(--bg);
+  transition: background-color 0.2s ease-in-out, 
+              text-underline-offset 0.2s ease-in-out,
+              text-decoration-color 0.2s ease-in-out,
+              border-color 0.2s ease-in-out,
+              color 0.2s ease-in-out;
+}
+
+:hover:is(.button, button) {
+  background-color: var(--bg);
+  border-color: var(--secondary);
+  color: var(--secondary);
+  text-decoration-color: transparent;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--display), sans-serif;
+  line-height: calc(1em + 0.5rem);
+  letter-spacing: 0.1em;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--size-4);
+  font-weight: 800;
+  margin: 0;
+}
+
+h2 {
+  font-size: var(--size-3);
+}
+
+h3 {
+  font-size: var(--size-2);
+}
+
+h4 {
+  font-size: var(--size-1);
+}
+
+ul,
+ol {
+  padding-inline-start: 1em;
+}
+
+blockquote {
+  padding-inline-start: 1em;
+  border-inline-start: 0.3em solid;
+  font-style: italic;
+  font-size: var(--size-1);
+}
+
+time {
+  font-style: italic;
+  color: var(--secondary);
+  /* text-decoration: underline; */
+  /* text-decoration-thickness: 0.3ex; */
+  /* text-underline-offset: 0.7ex; */
+  /* background-color: var(--secondary); */
+  padding: 0.25em;
+}
+
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+:is(h1, h2, h3, blockquote) {
+  --flow-space: 1.5em;
+}
+
+:is(h1, h2, h3) + * {
+  --flow-space: 0.5em;
+}
+
+article {
+  max-width: 65ch;
+  margin-inline: auto;
+}
+
+article > * {
+  max-width: 65ch;
+}
+
+blockquote {
+  max-width: 50ch;
+}
+
+h1 {
+  max-width: 20ch;
+}
+
+h2,
+h3{
+  max-width: 28ch;
+}
+
+.lede,
+.blog-post p:first-of-type{
+  font-size: var(--size-2);
+  font-style: italic;
+  max-width: 50ch;
+  text-wrap: balance;
+}
+
+.lede + * {
+  --flow-space: var(--size-1);
+}
+
+@media(min-width: 48rem) {
+  .header-inner,
+  .footer-inner {
+    padding-inline: var(--size-6);
+  }
+  
+  main {
+    padding: var(--size-6);
+  }
+
+}

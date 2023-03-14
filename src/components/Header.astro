@@ -1,0 +1,93 @@
+---
+const current = Astro.url.pathname;
+---
+
+<header>
+  <!--<a href="/" id="site-brand">JeffCaldwell.is</a>-->
+  <div class="header-inner">
+    <nav>
+      <a href="/" class={current === '/' ? 'current' : ''}>Home</a>
+      <a href="/blog" class={current === '/blog' ? 'current' : ''}>Blog</a>
+      <a href="/projects" class={current === '/projects' ? 'current' : ''}>Projects</a>
+      <a href="/about" class={current === '/about' ? 'current' : ''}>About</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--size-3);
+    background-color: var(--primary);
+  }
+
+  .header-inner {
+    width: 100%;
+    max-width: var(--width-max-ui);
+  }
+
+  #site-brand {
+    font-size: var(--size-3);
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 800;
+    letter-spacing: 0.075em;
+  }
+
+  #site-brand:hover,
+  #site-brand:focus {
+    color: currentColor;
+  }
+
+  nav {
+    display: flex;
+    gap: var(--size-1);
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  nav a {
+    font-size: var(--size-0);
+    color: currentColor;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.2s ease-in-out, text-underline-offset 0.2s ease-in-out;
+    font-family: 'Sunscy';
+    letter-spacing: 0.1em;
+  }
+
+  nav a:hover,
+  nav a:focus,
+  .current {
+    text-decoration-color: currentColor;
+  }
+
+
+  @media(min-width: 48rem) {
+    /* .header-inner { */
+    /*   padding-inline: var(--size-6); */
+    /* } */
+
+    nav {
+      gap: var(--size-2);
+    }
+    nav a {
+      font-size: var(--size-1);
+    }
+  }
+
+  @media(max-width: 23rem) {
+    #site-brand {
+      font-size: var(--size-2);
+    }
+
+    nav {
+      gap: var(--size--1);
+    }
+
+    nav a {
+      font-size: var(--size-0);
+    }
+  }
+</style>
