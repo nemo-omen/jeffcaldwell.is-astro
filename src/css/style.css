@@ -61,6 +61,7 @@ body{
   color: var(--fg);
   font-size: var(--size-1);
   scrollbar-width: thin;
+  scrollbar-gutter: stable;
   scrollbar-color: var(--fg-alpha) var(--bg);
   overflow: scroll;
 }

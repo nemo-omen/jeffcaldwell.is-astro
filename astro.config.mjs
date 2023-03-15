@@ -8,6 +8,7 @@ import image from "@astrojs/image";
 // https://astro.build/config
 export default defineConfig({
   // output: "server",
+  site: "https://jeffcaldwell.is",
   integrations: [
     mdx(),
     image({
