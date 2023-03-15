@@ -1,5 +1,5 @@
 ---
-import { Image, getImage } from 'astro:assets';
+import { Image } from 'astro:assets';
 const { frontMatter, href, type, isFirst } = Astro.props;
 const { image, title, summary } = frontMatter;
 const feature = await import(/* @vite-ignore */`../assets/images/${image.src}.webp`);

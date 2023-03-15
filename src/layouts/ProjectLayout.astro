@@ -11,7 +11,7 @@ const {title} = data;
 ---
 
 <Layout {title}>
-  <main>
+  <main id="main">
     <article class="flow blog-post">
       <h1>{title}</h1>
       <time>{data.date.toLocaleDateString('en-us', {weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'})}</time>

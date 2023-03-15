@@ -1,0 +1,40 @@
+---
+const { type } = Astro.props || '';
+---
+
+<div class:list={['flow', 'notice', type]}>
+  <slot />
+</div>
+
+<style>
+  :root {
+    --border-color: var(--fg);
+  }
+  .info {
+    --border-color: var(--secondary);
+  }
+
+  .warning {
+    --border-color: var(--warn);
+  }
+
+  .notice {
+    font-size: var(--size-1);
+    padding: 1.5em;
+    border: 2px dashed var(--border-color);
+    --flow-space: var(--size-2);
+  }
+
+  .notice:last-child {
+    margin-bottom: 0;
+  }
+
+  .notice h2,
+  .notice h3,
+  .notice h4 {
+    font-size: var(--size-3);
+    border-bottom: 1px solid var(--border-color);
+    margin: 0;
+    padding: 0 0 0.25em 0;
+  }
+</style>

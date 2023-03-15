@@ -1,0 +1,85 @@
+---
+const { fileName, lineNumber } = Astro.props;
+const name = fileName || '';
+const lineNo = lineNumber || '';
+---
+
+<figure>
+  <figcaption>{name}</figcaption>
+  <slot />
+</figure>
+
+<style define:vars={{lineNo}}>
+figure {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-block: var(--size-4);
+}
+
+figCaption {
+  margin: 0;
+  background-color: var(--black-darker);
+  border: 1px solid var(--fg-alpha);
+  border-bottom: none;
+  /* transform: translateY(1px); */
+  /* display: inline; */
+  padding: 0 0.25em;
+  text-align: right;
+  align-self: flex-end;
+  border-radius: 0.25ex 0.25ex 0 0;
+  font-family: var(--mono);
+}
+
+figcaption::before {
+  content: '🗎';
+  color: var(--fg);
+  padding: 0 0.5em 0 0;
+  /* background-color: var(--secondary-alpha); */
+}
+
+:global(figure .astro-code) {
+  font-size: var(--size-1);
+  /* counter-increment: step calc(var(--line, 1) - 1); */
+  /* counter-increment: step calc(var(--lineNo, 1) -1); */
+  background-color: var(--black-darker);
+  overflow-x: auto;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid var(--fg-alpha);
+}
+
+:global(figure .astro-code code) {
+  counter-reset: step;
+  counter-increment: step calc(var(--lineNo, 1) - 1);
+  /* background-color: var(--blue); */
+}
+
+:global(figure .astro-code code .line) {
+  counter-increment: line;
+}
+
+:global(figure .astro-code code .highlight-line) {
+  background-color: var(--bg);
+  display: inline-block;
+  width: 100%;
+}
+
+:global(figure .astro-code code .line::before) {
+  content: counter(step);
+  counter-increment: step;
+  width: 1em;
+  margin-right: 1em;
+  display: inline-block;
+  padding-right: 0.5em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg);
+  /* background-color: var(--bg); */
+}
+
+:global(figure .astro-code code .highlight-line::before) {
+  color: var(--fg);
+}
+</style>

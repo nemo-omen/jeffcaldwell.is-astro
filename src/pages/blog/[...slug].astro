@@ -16,10 +16,8 @@ const { Content } = await entry!.render();
 ---
 
 <BlogLayout data={entry!.data}>
-  <time>{date.toLocaleDateString('en-US', {weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'})}</time>
-  <!--<img src={feature.default.src} alt={image.alt} width={feature.default.width} height={feature.default.height}>-->
   <Image src={feature.default} alt={image!.alt} class="feature"/>
-  <Content />
+  <Content class="flow"/>
 </BlogLayout>
 
 <style>

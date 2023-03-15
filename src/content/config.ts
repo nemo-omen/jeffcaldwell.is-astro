@@ -11,6 +11,7 @@ export const collections = {
         alt: z.string(),
       }).optional(),
       tags: z.array(z.string()).optional(),
+      draft: z.boolean(),
     }),
   }),
   "projects": defineCollection({
@@ -22,6 +23,7 @@ export const collections = {
         src: z.string(),
         alt: z.string(),
       }).optional(),
+      draft: z.boolean(),
     }),
   }),
 };

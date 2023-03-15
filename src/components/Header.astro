@@ -52,9 +52,13 @@ const current = Astro.url.pathname;
     font-size: var(--size-0);
     color: currentColor;
     text-decoration-color: transparent;
-    transition: text-decoration-color 0.2s ease-in-out, text-underline-offset 0.2s ease-in-out;
+    outline-color: transparent;
+    transition: text-decoration-color 0.2s ease-in-out,
+                text-underline-offset 0.2s ease-in-out
+                outline-color 0.2s ease-in-out;
     font-family: 'Sunscy';
     letter-spacing: 0.1em;
+    padding: 0 0.25em;
   }
 
   nav a:hover,
@@ -63,6 +67,9 @@ const current = Astro.url.pathname;
     text-decoration-color: currentColor;
   }
 
+  nav a:focus {
+    text-decoration-color: transparent;
+  }
 
   @media(min-width: 48rem) {
     /* .header-inner { */

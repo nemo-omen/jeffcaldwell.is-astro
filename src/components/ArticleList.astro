@@ -2,10 +2,12 @@
 const { sectionTitle, articles } = Astro.props;
 import ArticlePreview from './ArticlePreview.astro';
 
-console.log(articles);
+const sorted = articles.sort((a, b) => b.data.date - a.data.date);
+
+// console.log(sorted);
 ---
 
-{articles.map((article) => (
+{sorted.map((article) => (
   <ArticlePreview 
     frontMatter={article.data}
     href={'/' + article.collection + '/' + article.slug}

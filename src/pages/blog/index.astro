@@ -3,13 +3,12 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import  ArticleList from '../../components/ArticleList.astro';
 
-const allBlogPosts = await getCollection('blog');
-
+let allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
 // console.log(allBlogPosts);
 ---
 
 <Layout title="Jeff Caldwell | Blog">
-  <main class="flow">
+  <main class="flow" id="main">
     <h1>Blog</h1>
     <ArticleList articles={allBlogPosts} />
   </main>

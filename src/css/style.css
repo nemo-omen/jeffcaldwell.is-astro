@@ -19,23 +19,26 @@
   --default-margin: var(--size-2);
 
   --black: #13111b;
+  --black-darker: #0a0a0f;
   --white: #f7f6f6ff;
+  --white-alpha: hsl(0, 5%, 96%, 30%);
   --red: #D4594C;
   --red-darker: hsl(5 61% 50%);
-  /* --yellow: #FFF13B; */
   --yellow: #FFE319;
-  /* --magenta: #ff4683; */
   --magenta: #FF008A;
   --blue: #1E7E9C;
-  /* --cyan: #43C1E8; */
   --cyan: #19E7FF;
+  --cyan-alpha: hsl(186, 100%, 54%, 40%);
   --blue-lighter: hsl(182 62% 60%);
 
   --bg: var(--black);
   --fg: var(--white);
+  --fg-alpha: var(--white-alpha);
   --primary: var(--magenta);
   --accent: var(--yellow);
   --secondary: var(--cyan);
+  --secondary-alpha: var(--cyan-alpha);
+  --warn: var(--magenta);
 
   /* Font aliases */
   --display: 'Sunscy';
@@ -82,6 +85,8 @@ code {
   font-family: var(--mono) monospace;
 }
 
+
+
 a {
   color: currentColor;
   transition: color 0.2s ease-in-out;
@@ -89,12 +94,24 @@ a {
   text-decoration-thickness: 0.3ex;
   text-underline-offset: 0.3ex;
   text-decoration-color: var(--secondary);
-  transition: text-underline-offset 0.2s ease-in-out;
+  outline-color: transparent;
+  transition: text-underline-offset 0.2s ease-in-out,
+              text-decoration-color 0.2s ease-in-out,
+              outline-color 0.2s ease-in-out;
+
 }
+
 
 a:hover,
 a:focus {
   text-underline-offset: 0.7ex;
+  text-decoration-color: transparent;
+  outline-color: var(--secondary);
+}
+
+:focus {
+  outline: 0.3ex solid var(--secondary);
+  outline-offset: 0.2ex;
 }
 
 .button,
@@ -103,6 +120,9 @@ button {
   justify-content: center;
   align-items: center;
   text-decoration-color: currentColor;
+  outline-color: transparent;
+  outline-offset: -0.3ex;
+  outline-width: 0.3ex;
   background-color: var(--accent);
   color: var(--bg);
   font-size: var(--size-2);
@@ -114,7 +134,8 @@ button {
               text-underline-offset 0.2s ease-in-out,
               text-decoration-color 0.2s ease-in-out,
               border-color 0.2s ease-in-out,
-              color 0.2s ease-in-out;
+              color 0.2s ease-in-out,
+              outline-color 0.2s ease-in-out;
 }
 
 :hover:is(.button, button) {
@@ -123,6 +144,13 @@ button {
   color: var(--secondary);
   text-decoration-color: transparent;
 }
+
+:focus:is(button, .button) {
+  outline-color: var(--secondary);
+  background-color: var(--bg);
+  color: var(--secondary);
+}
+
 
 h1,
 h2,
@@ -214,7 +242,7 @@ h3{
 }
 
 .lede,
-.blog-post p:first-of-type{
+.blog-post > p:first-of-type{
   font-size: var(--size-2);
   font-style: italic;
   max-width: 50ch;
@@ -224,6 +252,53 @@ h3{
 .lede + * {
   --flow-space: var(--size-1);
 }
+
+.astro-code {
+  background-color: var(--black-darker);
+  padding: 1em;
+}
+
+code:not(pre>code){
+  background-color: var(--secondary-alpha);
+  display: inline-block;
+  padding: 0 0.25em;
+  border: 1px solid var(--bg);
+}
+
+
+  .visible-hidden {
+    clip: rect(1px 1px 1px 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .visible-hidden:focus {
+    clip: auto;
+    height: auto;
+    overflow: auto;
+    position: absolute;
+    width: auto;
+  }
+
+  #skip {
+    top: 0;
+    left: var(--size-1);
+    /* transform: translateX(-50%); */
+    transition: transform 0.3s ease-out;
+    font-size: var(--size-500);
+    font-family: 'Noto Sans', system-ui, sans-serif;
+    font-weight: 500;
+    padding: 0.125em 0.25em;
+    background: var(--primary);
+    text-decoration: none;
+  }
+
+  #skip:focus {
+   transform: translate(0, var(--size-0)); 
+  }
 
 @media(min-width: 48rem) {
   .header-inner,

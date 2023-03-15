@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Jeff Caldwell">
-	<main>
+	<main id="main">
     <div class="hero">
       <h1>
         <span class="title-display td1">Jeff </span>
@@ -12,7 +12,7 @@ import Layout from '../layouts/Layout.astro';
         <span class="subtitle-display">a web developer, writer, journalist and student.</span>
       </h1>
       <p class="message display" style="color: var(--secondary)">
-        I make fast, accessible websites and write engaging docs and tutorials.
+        I make fast, accessible websites, and write engaging docs and tutorials.
       </p>
     </div>
 
@@ -142,6 +142,7 @@ import Layout from '../layouts/Layout.astro';
     margin: 0 auto;
     text-decoration: none;
     display: none;
+    outline-offset: var(--size-0);
   }
 
   .hint * {
