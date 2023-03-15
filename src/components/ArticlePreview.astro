@@ -25,9 +25,11 @@ const firstClass = isFirst ? 'first' : '';
     </a>
 
     <div class="preview-content">
-      <a href={href}>
-        <h2>{title}</h2>
-      </a>
+      <h2>
+        <a href={href}>
+            {title}
+        </a>
+      </h2>
       <p>{summary} <a href={href}>Read more</a></p>
     </div>
   </article>
@@ -45,6 +47,19 @@ const firstClass = isFirst ? 'first' : '';
     aspect-ratio: 16 / 9;
     object-fit: cover;
   }
+
+  a {
+    display: inline-block;
+  }
+
+  /* a { */
+  /*   outline-color: var(--transparent); */
+  /*   transotion: outline-color 0.2s ease-in-out; */
+  /* } */
+  /**/
+  /* a:focus { */
+  /*   outline-color: var(--secondary); */
+  /* } */
 
   @media(min-width: 48rem) {
     article {

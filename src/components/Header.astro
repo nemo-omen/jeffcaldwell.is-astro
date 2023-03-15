@@ -49,6 +49,10 @@ const current = Astro.url.pathname;
   }
 
   nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
     font-size: var(--size-0);
     color: currentColor;
     text-decoration-color: transparent;
@@ -58,7 +62,7 @@ const current = Astro.url.pathname;
                 outline-color 0.2s ease-in-out;
     font-family: 'Sunscy';
     letter-spacing: 0.1em;
-    padding: 0 0.25em;
+    padding: 0.25em 0.25em 0 0.25em;
   }
 
   nav a:hover,

@@ -5,6 +5,7 @@ date: 2023-03-23
 image:
   src: writingfeature
   alt: A nice picture of a grackle
+tags: ['Test', 'Grackle']
 draft: true
 ---
 

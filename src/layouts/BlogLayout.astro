@@ -7,14 +7,20 @@ export interface props {
 
 const {data} = Astro.props;
 
-const {title} = data;
+const {title, date, tags} = data;
 ---
 
 <Layout {title}>
   <main id="main">
     <article class="flow blog-post">
       <h1>{title}</h1>
-      <time>{data.date.toLocaleDateString('en-us', {weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'})}</time>
+      <div class="post-meta">
+        <time>{date.toLocaleDateString('en-us', {weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'})}</time>
+        <div class="taglist">
+          <span aria-label="Post tags" title="Post tags">🏷️</span>
+          {tags.map((tag: string) => <a href=`/tags/${tag.toLowerCase()}` class="tag">#{tag}</a>)}
+        </div>
+      </div>
       <slot />
     </article>
   </main>

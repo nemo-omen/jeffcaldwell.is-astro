@@ -90,8 +90,6 @@ code {
   font-family: var(--mono) monospace;
 }
 
-
-
 a {
   color: currentColor;
   transition: color 0.2s ease-in-out;
@@ -100,6 +98,7 @@ a {
   text-underline-offset: 0.3ex;
   text-decoration-color: var(--secondary);
   outline-color: transparent;
+  outline-width: 0.3ex;
   transition: text-underline-offset 0.2s ease-in-out,
               text-decoration-color 0.2s ease-in-out,
               outline-color 0.2s ease-in-out;
@@ -111,7 +110,6 @@ a:hover,
 a:focus {
   text-underline-offset: 0.7ex;
   text-decoration-color: transparent;
-  outline-color: var(--secondary);
 }
 
 :focus {
@@ -291,7 +289,10 @@ code:not(pre>code){
   #skip {
     top: 0;
     left: var(--size-1);
-    /* transform: translateX(-50%); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
     transition: transform 0.3s ease-out;
     font-size: var(--size-500);
     font-family: 'Noto Sans', system-ui, sans-serif;
@@ -299,10 +300,29 @@ code:not(pre>code){
     padding: 0.125em 0.25em;
     background: var(--primary);
     text-decoration: none;
+    overflow: hidden;
   }
 
   #skip:focus {
    transform: translate(0, var(--size-0)); 
+  }
+
+  .taglist {
+    font-family: var(--mono);
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+  }
+
+  .tag {
+    text-decoration: none;
+    transition: color 0.2s ease-in-out, outline-color 0.2s ease-in-out;
+    color: var(--primary);
+  }
+
+  .tag:hover,
+  .tag:focus {
+    color: var(--secondary);
   }
 
 @media(min-width: 48rem) {
@@ -334,5 +354,14 @@ code:not(pre>code){
 
   :is(h1, h2, h3) + * {
     --flow-space: var(--size--1);
+  }
+
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .taglist {
+    justify-content: flex-end;
   }
 }
