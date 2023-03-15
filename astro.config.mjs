@@ -5,23 +5,22 @@ import image from "@astrojs/image";
 
 // import vercel from "@astrojs/vercel/serverless";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   // output: "server",
   site: "https://jeffcaldwell.is",
-  integrations: [
-    mdx(),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
-  ],
+  integrations: [mdx(), image({
+    serviceEntryPoint: "@astrojs/image/sharp"
+  }), sitemap()],
   // experimental: {
   //   assets: true,
   // },
   markdown: {
     shikiConfig: {
-      theme: tokyonight,
-    },
-  },
+      theme: tokyonight
+    }
+  }
   // adapter: vercel()
 });
