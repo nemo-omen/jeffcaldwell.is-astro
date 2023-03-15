@@ -1,3 +1,7 @@
+@layer reset;
+
+@import url('./reset.css') layer(reset);
+
 :root {
   
   --width-max-content: 55rem;
@@ -17,6 +21,7 @@
   --size-10: clamp(6.97rem, calc(5.34rem + 8.13vw), 11.64rem);
 
   --default-margin: var(--size-2);
+  --flow-space: var(--size-2);
 
   --black: #13111b;
   --black-darker: #0a0a0f;
@@ -43,7 +48,7 @@
   /* Font aliases */
   --display: 'Sunscy';
   --serif: 'BespokeSerif';
-  --mono: 'Fira Mono';
+  --mono: 'IBM Plex Mono';
 }
 
 * {
@@ -212,11 +217,11 @@ time {
 }
 
 :is(h1, h2, h3, blockquote) {
-  --flow-space: 1.5em;
+  --flow-space: var(--size-2);
 }
 
 :is(h1, h2, h3) + * {
-  --flow-space: 0.5em;
+  --flow-space: var(--size--1);
 }
 
 article {
@@ -301,6 +306,19 @@ code:not(pre>code){
   }
 
 @media(min-width: 48rem) {
+  :root {
+    --flow-space: var(--size-4);
+    --default-margin: var(--size-6);
+  }
+
+  p:has(+ figure) {
+    margin-bottom: var(--size-6);
+  }
+
+  figure {
+    margin-bottom: var(--size-6);
+  }
+
   .header-inner,
   .footer-inner {
     padding-inline: var(--size-6);
@@ -310,4 +328,11 @@ code:not(pre>code){
     padding: var(--size-6);
   }
 
+  :is(h1, h2, h3, blockquote) {
+    --flow-space: var(--size-4);
+  }
+
+  :is(h1, h2, h3) + * {
+    --flow-space: var(--size--1);
+  }
 }

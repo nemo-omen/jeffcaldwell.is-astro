@@ -1,11 +1,11 @@
 ---
-const { fileName, lineNumber } = Astro.props;
-const name = fileName || '';
-const lineNo = lineNumber || '';
+const { file, line } = Astro.props;
+const name = file || '';
+const lineNo = line || '';
 ---
 
-<figure>
-  <figcaption>{name}</figcaption>
+<figure class="code-figure">
+  <figcaption class="code-caption">{name}</figcaption>
   <slot />
 </figure>
 
@@ -14,7 +14,6 @@ figure {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-block: var(--size-4);
 }
 
 figCaption {
@@ -22,8 +21,6 @@ figCaption {
   background-color: var(--black-darker);
   border: 1px solid var(--fg-alpha);
   border-bottom: none;
-  /* transform: translateY(1px); */
-  /* display: inline; */
   padding: 0 0.25em;
   text-align: right;
   align-self: flex-end;
@@ -35,13 +32,10 @@ figcaption::before {
   content: '🗎';
   color: var(--fg);
   padding: 0 0.5em 0 0;
-  /* background-color: var(--secondary-alpha); */
 }
 
 :global(figure .astro-code) {
   font-size: var(--size-1);
-  /* counter-increment: step calc(var(--line, 1) - 1); */
-  /* counter-increment: step calc(var(--lineNo, 1) -1); */
   background-color: var(--black-darker);
   overflow-x: auto;
   width: 100%;
@@ -53,7 +47,6 @@ figcaption::before {
 :global(figure .astro-code code) {
   counter-reset: step;
   counter-increment: step calc(var(--lineNo, 1) - 1);
-  /* background-color: var(--blue); */
 }
 
 :global(figure .astro-code code .line) {
@@ -76,7 +69,6 @@ figcaption::before {
   text-align: right;
   font-variant-numeric: tabular-nums;
   color: var(--fg);
-  /* background-color: var(--bg); */
 }
 
 :global(figure .astro-code code .highlight-line::before) {

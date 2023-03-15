@@ -1,17 +1,27 @@
 ---
-import { Image } from 'astro:assets';
+// import { Image } from 'astro:assets';
+import { Image, Picture } from '@astrojs/image/components';
 const { frontMatter, href, type, isFirst } = Astro.props;
 const { image, title, summary } = frontMatter;
 const feature = await import(/* @vite-ignore */`../assets/images/${image.src}.webp`);
 const { src, width, height } = feature.default;
-// console.log(feature);
+
 const firstClass = isFirst ? 'first' : '';
 ---
 
   <article class=`${firstClass} ${type}`>
     <a href={href}>
       <!--<img src={src} alt={image.alt} width={width} height={height}/>-->
-      <Image src={feature.default} alt={image.alt} />
+      <Picture 
+        src={feature.default}
+        alt={image.alt}
+        widths={[200, 400, 800]}
+        aspectRatio={16 / 9}
+        sizes="(max-width: 800px) 100vw, 800px"
+        fit="cover"
+        width={width}
+        height={height}
+        />
     </a>
 
     <div class="preview-content">
@@ -38,9 +48,9 @@ const firstClass = isFirst ? 'first' : '';
 
   @media(min-width: 48rem) {
     article {
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 2fr 3fr;
       grid-template-rows: unset;
-      /* gap: var(--size-6); */
+      gap: var(--size-6);
     }
     img {
       aspect-ratio: 4 / 3;

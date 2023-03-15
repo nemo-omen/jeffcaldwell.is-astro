@@ -1,6 +1,8 @@
 ---
-import { Image } from 'astro:assets';
-import { getEntryBySlug } from 'astro:content';
+import { Image, Picture} from '@astrojs/image/components';
+import { getImage } from '@astrojs/image';
+// import { getEntryBySlug } from 'astro:content';
+import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 // import MarkdownPage from '../../layouts/MarkdownPage.astro';
 import BlogLayout from '../../layouts/BlogLayout.astro';
@@ -8,22 +10,46 @@ import BlogLayout from '../../layouts/BlogLayout.astro';
 interface Props {
   post: CollectionEntry<'blog'>;
 }
-const { slug } = Astro.params;
-const entry = await getEntryBySlug('blog', slug!);
+
+export async function getStaticPaths() {
+  const blogEntries = await(getCollection('blog'));
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug }, props: { entry }
+  }))
+}
+
+const { entry } = Astro.props;
+// const { slug } = Astro.params;
+// const entry = await getEntryBySlug('blog', slug!);
 const { image, date, summary } = entry!.data;
 const feature = await import(/* @vite-ignore */`../../assets/images/${image!.src}.webp`);
+
+const { width, height } = feature.default;
+
 const { Content } = await entry!.render();
 ---
 
 <BlogLayout data={entry!.data}>
-  <Image src={feature.default} alt={image!.alt} class="feature"/>
+<div>
+  <Picture 
+    src={feature.default}
+    alt={image!.alt}
+    class="feature"
+    widths={[400, 800, 900, 1200]}
+    aspectRatio={16 / 9}
+    sizes="(max-width: 400px) 400px, (max-width: 600px) 600px, (max-width: 900px) 900px, (min-width: 901px) 1200px"
+    fit="inside"
+    width={width}
+    height={height}
+    loading="eager"
+    />
+</div>
   <Content class="flow"/>
 </BlogLayout>
 
 <style>
   img {
     object-fit: cover;
-    height: auto;
   }
 
   feature {

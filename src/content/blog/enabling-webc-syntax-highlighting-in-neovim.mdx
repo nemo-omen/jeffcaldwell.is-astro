@@ -81,7 +81,7 @@ configuration tutorial). For me, it's in
 `~/.config/nvim/lua/treesitter-config.lua`. Somewhere down at the bottom, add
 the following:
 
-<Code fileName="treesitter-config.lua" lineNumber={1}>
+<Code file="treesitter-config.lua" line={1}>
 ```lua
 vim.filetype.add({
     extension = {
@@ -95,7 +95,7 @@ This gives NeoVim the information it needs to understand that `.webc` is its own
 filetype that should be treated like a `.html` file. This doesn't turn on syntax
 highlighting yet. That's what the next line does:
 
-<Code fileName="treesitter-config.lua" lineNumber="7">
+<Code file="treesitter-config.lua" line="7">
 ```lua
 vim.treesitter.language.register('html', 'webc')
 ```
