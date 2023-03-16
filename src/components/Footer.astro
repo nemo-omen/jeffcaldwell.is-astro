@@ -1,0 +1,129 @@
+---
+import Icon from '../components/Icon.astro';
+const startDate = new Date('February 26, 2023');
+const currentDate = new Date();
+const startYear = startDate.getFullYear();
+const currentYear = currentDate.getFullYear();
+const notSameYear = currentYear !== startYear;
+
+---
+
+<footer>
+  <div class="footer-inner">
+    <section>
+      <h2>Pages</h2>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/resume">Resume</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>Links</h2>
+      <ul>
+        <li>
+          <Icon name="rss" label="RSS"/>
+          <a href="/rss">RSS</a>
+        </li>
+        <li>
+          <Icon name="mastodon" label="Mastodon"/>
+          <a href="https://hachyderm.io/@trainingmontage" rel="me">Mastodon</a>
+        </li>
+        <li>
+          <Icon name="github" label="GitHub"/>
+          <a href="https://github.com/nemo-omen" rel="me">GitHub</a>
+        </li>
+        <li>
+          <Icon name="linkedin" label="LinkedIn" />
+          <a href="https://www.linkedin.com/in/jeff-caldwell-4424181a/" rel="me">LinkedIn</a>
+        </li>
+      </ul>
+    </section>
+    <section>
+      <p class="display">
+        &copy; {startYear}
+        {notSameYear && - currentYear}
+        <!--{#if startYear != currentYear}
+          - {currentYear}
+        {/if}-->
+        Jeff Caldwell.
+      </p>
+      <hr>
+      <p>Made with <a href="https://astro.build">Astro</a>.</p>
+      <p>Non-intrusive, non-tracking analytics by <a href="plausible.io">Plausible</a>.</p>
+    </section>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 2px dotted var(--primary);
+  }
+  footer *{
+    font-size: var(--size-0);
+    color: var(--secondary);
+  }
+
+  footer section {
+    padding: var(--size-1);
+    /* text-align: center; */
+  }
+
+  footer section:not(:last-of-type) {
+    border-bottom: 2px dotted var(--primary)
+  }
+
+  footer section p {
+    text-align: left;
+  }
+
+  footer h2 {
+    color: var(--secondary);
+  }
+
+  footer ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: '';
+  }
+
+  footer li {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    padding-block: 0.215em;
+  }
+
+  footer li a {
+    font-family: var(--display);
+    letter-spacing: 0.1em;
+  }
+
+  footer li :global(svg.c) {
+    width: var(--size-2);
+    height: var(--size-2);
+  }
+
+  .display {
+    letter-spacing: 0.1em;
+    /* font-size: var(--size-1); */
+  }
+
+  @media(min-width: 48rem) {
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      justify-content: start;
+    }
+
+    footer section {
+      padding: 0 var(--size-2);
+    }
+
+    footer section:not(:last-of-type) {
+      border-right: 2px dotted var(--primary);
+      border-bottom: none;
+    }
+  }
+</style>

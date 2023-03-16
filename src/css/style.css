@@ -80,7 +80,7 @@ body::-webkit-scrollbar-thumb {
 }
 .header-inner,
 main,
-footer {
+.footer-inner {
   max-width: var(--width-max-ui);
   padding: var(--size-1);
   margin: 0 auto;
@@ -327,6 +327,7 @@ code:not(pre>code){
     font-family: var(--mono);
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     gap: 1em;
   }
 
@@ -375,9 +376,11 @@ code:not(pre>code){
   .post-meta {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .taglist {
     justify-content: flex-end;
+    align-items: center;
   }
 }

@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 
 export interface props {
   title: string;
@@ -17,7 +18,7 @@ const {title, date, tags} = data;
       <div class="post-meta">
         <time>{date.toLocaleDateString('en-us', {weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'})}</time>
         <div class="taglist">
-          <span aria-label="Post tags" title="Post tags">🏷️</span>
+          <Icon name="tag" label="Tags"/>
           {tags.map((tag: string) => <a href=`/tags/${tag.toLowerCase()}` class="tag">#{tag}</a>)}
         </div>
       </div>
@@ -25,3 +26,11 @@ const {title, date, tags} = data;
     </article>
   </main>
 </Layout>
+
+<style>
+  .taglist :global(.c) {
+    fill: var(--primary);
+    width: var(--size-2);
+    height: var(--size-2);
+  }
+</style>
