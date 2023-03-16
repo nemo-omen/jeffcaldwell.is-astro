@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/MarkdownPage.astro
 title: Jeff Caldwell | About
+summary: I'm a digital journalist in the last year of my computer science degree in San Angelo, Texas. I love making websites and writing, and I focus on creating sites that are accessible, fast, and great looking.
 ---
 
 # About Me

@@ -7,10 +7,10 @@ export interface props {
 
 const {data} = Astro.props;
 
-const {title} = data;
+const {title, date, tags, summary} = data;
 ---
 
-<Layout {title}>
+<Layout {title} description={summary}>
   <main id="main">
     <article class="flow blog-post">
       <h1>{title}</h1>

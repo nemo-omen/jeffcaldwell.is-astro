@@ -3,12 +3,14 @@ import Layout from './Layout.astro';
 
 export interface props {
   title: string;
+  summary: string;
 }
 
-const {title} = Astro.props;
+const {title, frontmatter} = Astro.props;
+const { summary } = frontmatter;
 ---
 
-<Layout {title}>
+<Layout {title} description={summary}>
   <main class="flow" id="main">
     <article class="flow">
       <slot />

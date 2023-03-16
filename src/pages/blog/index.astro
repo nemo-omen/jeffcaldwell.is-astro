@@ -7,7 +7,7 @@ let allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
 // console.log(allBlogPosts);
 ---
 
-<Layout title="Jeff Caldwell | Blog">
+<Layout title="Jeff Caldwell | Blog" description="Jeff Caldwell is a web developer, writer, journalist, and student who makes fast, accessible websites and writes engaging docs and tutorials.">
   <main class="flow" id="main">
     <h1>Blog</h1>
     <ArticleList articles={allBlogPosts} />
