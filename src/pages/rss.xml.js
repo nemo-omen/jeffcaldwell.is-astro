@@ -7,16 +7,24 @@ const parser = new MarkdownIt();
 
 export async function get(context) {
   const blog = await getCollection("blog");
+  const filtered = blog.filter((post) => (
+    post.data.draft !== true
+  ));
+
+  const sorted = filtered.sort((a, b) => (
+    b.data.date - a.data.date
+  ));
 
   return rss({
     title: "Jeff Caldwell's Blog",
     description: "",
     site: context.site,
+    // site: "https://jeffcaldwell.is",
     language: "en-us",
     webMaster: "jeff@jeffcaldwell.is",
     generator: "https://astro.build",
     stylesheet: "/styles/pretty-feed-v3.xsl",
-    items: blog.map((post) => ({
+    items: sorted.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.summary,

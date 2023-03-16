@@ -9,7 +9,7 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   // output: "server",
-  // site: "https://jeffcaldwell.is",
+  site: "https://jeffcaldwell.is",
   integrations: [
     mdx(),
     image({
