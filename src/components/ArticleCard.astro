@@ -1,0 +1,33 @@
+---
+import { Image, Picture } from '@astrojs/image/components';
+const { data, headingLevel } = Astro.props;
+
+const { title, date, summary, image } = data;
+
+const feature = await import(/* @vite-ignore */`../assets/images/${image!.src}.webp`);
+const { width, height } = feature.default;
+
+---
+
+<article class="card">
+<Picture 
+    src={feature.default}
+    alt={image!.alt}
+    class="feature"
+    widths={[200, 400, 600, 800]}
+    aspectRatio={4 / 3}
+    sizes="(max-width: 400px) 200px, (max-width: 600px) 400px, (max-width: 900px) 800px, (min-width: 901px) 800px"
+    fit="inside"
+    width={width}
+    height={height}
+    loading="lazy"
+    />
+{headingLevel === 2 && <h2>{title}</h2>}
+{headingLevel === 3 && <h3>{title}</h3>}
+{headingLevel === 4 && <h4>{title}</h4>}
+
+</article>
+
+<style>
+
+</style>
