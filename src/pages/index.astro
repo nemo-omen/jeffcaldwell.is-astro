@@ -38,18 +38,23 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
       <a class="button accent display" href="/resume">Resume</a>
     </div>
       
-    <a class="hint" href="#latest">
+    <!--<a class="hint" href="#latest">
       <p class="display">
         There's More!
       </p>
       <svg viewBox="0 0 48 60" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M33.588 0H13.6347V36.4848H4.3544e-06L23.5152 60L47.0304 36.4848H33.588V0Z" class="c"/>
       </svg>
-    </a>
+    </a>-->
 
     
     <section id="latest">
-    <h2 class="latest-title">All the Latest</h2>
+    <div class="hint">
+      <h2 class="latest-title display">There's More!</h2>
+      <svg viewBox="0 0 48 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M33.588 0H13.6347V36.4848H4.3544e-06L23.5152 60L47.0304 36.4848H33.588V0Z" class="c"/>
+      </svg>
+    </div>
     {allPosts.map((post) => <ArticleCard data={post.data} headingLevel={3}/>)}
     </section>
 	</main>
@@ -204,7 +209,7 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
       gap: var(--size-6);
     }
 
-    #latest .latest-title {
+    #latest .hint {
       grid-column: span 2;
       justify-self: center;
       font-size: var(--size-5);
@@ -240,7 +245,7 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
       grid-template-columns: repeat(3, 1fr);
     }
 
-    #latest .latest-title {
+    #latest .hint {
       grid-column: span 3;
     }
   }
