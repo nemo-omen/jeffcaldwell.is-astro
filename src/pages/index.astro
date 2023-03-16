@@ -8,9 +8,10 @@ let allProjectPosts = await getCollection('projects', ({data}) => data.draft !==
 
 let allPosts = [...allBlogPosts, ...allProjectPosts]
   .sort((a, b) => b.data.date - a.data.date)
-  .slice(0, 5);
+  .slice(0, 6);
 
-// console.log({allPosts});
+const isOddPosts = allPosts.length % 0 !== 0;
+
 ---
 
 <Layout title="Jeff Caldwell" description="Jeff Caldwell is a web developer, writer, journalist, and student who makes fast, accessible websites and writes engaging docs and tutorials.">
@@ -58,11 +59,63 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
     {allPosts.map((post) => <ArticleCard data={post.data} headingLevel={3}/>)}
     </section>
 	</main>
+  <div class="isolate">
+    <div class="noise"></div>
+    <div class="overlay"></div>
+  </div>
 </Layout>
 
 <style>
   :root {
     --major-size: var(--size-6);
+  }
+
+  body {
+    position: relative;
+  }
+
+  .isolate {
+    position: absolute;
+    /* height: 100%; */
+    /* width: 100%; */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+   isolation: isolate; 
+  }
+
+  .noise,
+  .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .noise {
+    filter: contrast(130%);
+    background:
+      linear-gradient(
+        0deg,
+        var(--secondary),
+        var(--secondary-alpha-2),
+        var(--secondary-alpha),
+        var(--bg-alpha-2),
+        var(--bg),
+        var(--bg)
+        /* var(--bg) */
+        /* transparent, */
+        /* transparent */
+      ),
+      url('images/noise.svg');
+  }
+
+  .overlay {
+    background: var(--secondary);
+    mix-blend-mode: multiply;
   }
 
   main {
@@ -241,12 +294,12 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
       gap: var(--size-6);
     }
 
-    #latest {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    #latest .hint {
-      grid-column: span 3;
-    }
+    /* #latest { */
+    /*   grid-template-columns: repeat(3, 1fr); */
+    /* } */
+    /**/
+    /* #latest .hint { */
+    /*   grid-column: span 3; */
+    /* } */
   }
 </style>
