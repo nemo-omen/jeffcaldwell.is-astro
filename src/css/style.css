@@ -325,6 +325,7 @@ code:not(pre>code){
     overflow: hidden;
     font-family: var(--display);
     font-size: var(--size-500);
+    letter-spacing: 0.1em;
     text-decoration: none;
     /* line-height: 1; */
     outline-offset: unset;

@@ -1,0 +1,45 @@
+---
+const { url, currentPage, lastPage } = Astro.props;
+const pages: number[] = [];
+
+for(let i = 1; i <= lastPage; i++) {
+  pages.push(i);
+}
+---
+
+<nav>
+  {url.prev ? <a href={url.prev}>Previous</a> : <a class="disabled">Previous</a>}
+  {pages.map((pageNo) => (
+      <a 
+        href={'/blog' + (pageNo !== 1 ? pageNo.toString() : '')}
+        class={pageNo === currentPage ? 'current' : ''}>
+        {pageNo}
+      </a>
+    )
+  )}
+  {url.next ? <a href={url.next}>Next</a> : <a class="disabled">Next</a>}
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  nav a {
+    text-decoration-thickness: 0.1ex;
+  }
+
+  .current {
+    text-decoration-thickness: 0.3ex;
+    text-decoration-color: var(--primary);
+  }
+
+  .disabled {
+    color: var(--fg-alpha);
+    pointer-events: none;
+    cursor: default;
+    text-decoration-color: var(--fg-alpha);
+  }
+</style>

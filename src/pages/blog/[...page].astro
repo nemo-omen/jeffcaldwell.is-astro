@@ -1,16 +1,28 @@
 ---
 import { getCollection } from 'astro:content';
+
 import Layout from '../../layouts/Layout.astro';
 import  ArticleList from '../../components/ArticleList.astro';
+import PageNav from '../../components/PageNav.astro';
 
-let allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
-// console.log(allBlogPosts);
+export async function getStaticPaths({paginate}) {
+  let allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
+  const sorted = allBlogPosts.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  );
+  return paginate(sorted, {pageSize: 6});
+}
+
+const { page } = Astro.props;
+// console.log(page);
+const { currentPage, lastPage, url } = page;
 ---
 
 <Layout title="Jeff Caldwell | Blog" description="Jeff Caldwell is a web developer, writer, journalist, and student who makes fast, accessible websites and writes engaging docs and tutorials.">
   <main class="flow" id="main">
     <h1>Blog</h1>
-    <ArticleList articles={allBlogPosts} />
+    <ArticleList articles={page.data} />
+    <PageNav {currentPage} {lastPage} {url} />
   </main>
 </Layout>
 
