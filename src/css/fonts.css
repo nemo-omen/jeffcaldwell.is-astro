@@ -236,6 +236,8 @@
     font-style: italic;
 }
 
+/* Work Sans*/
+
 @font-face{
     font-family: 'Work Sans';
     src: url('/fonts/Work_Sans/static/WorkSans-Medium.woff2');

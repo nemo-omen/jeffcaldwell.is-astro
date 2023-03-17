@@ -1,6 +1,6 @@
 ---
 title: Test Project One
-summary: Nulla vitae elit libero, a pharetra augue. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Maecenas faucibus mollis interdum. Donec sed odio dui.
+summary: Nulla vitae elit libero, a pharetra augue. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
 date: 2023-03-16
 image:
   src: writingfeature

@@ -10,11 +10,6 @@ let allProjectPosts = await getCollection('projects', ({data}) => data.draft !==
 let allPosts = [...allBlogPosts, ...allProjectPosts]
   .sort((a, b) => b.data.date - a.data.date)
   .slice(0, 6);
-
-// console.log(allPosts);
-
-const isOddPosts = allPosts.length % 0 !== 0;
-
 ---
 
 <Layout title="Jeff Caldwell" description="Jeff Caldwell is a web developer, writer, journalist, and student who makes fast, accessible websites and writes engaging docs and tutorials.">
@@ -37,8 +32,7 @@ const isOddPosts = allPosts.length % 0 !== 0;
     </div>
 
     <div class="hint">
-      <h2>Latest Posts</h2>
-      <hr>
+      <h2>Featured Posts</h2>
     </div>
 
     <section id="latest">
@@ -93,10 +87,13 @@ const isOddPosts = allPosts.length % 0 !== 0;
     grid-column: span 2;
   }
 
+  .hint {
+    border-bottom: var(--outline-medium) solid var(--fg);
+  }
   #latest {
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-4);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: var(--size-6);
   }
 
   .isolate {
@@ -148,11 +145,11 @@ const isOddPosts = allPosts.length % 0 !== 0;
     main {
       padding: var(--size-6);
     }
-    #latest {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--size-6);
-    }
+    /* #latest { */
+    /*   display: grid; */
+    /*   grid-template-columns: repeat(2, 1fr); */
+    /*   gap: var(--size-6); */
+    /* } */
   }
 
   @media(min-width: 60rem) {
