@@ -51,7 +51,6 @@ const secondaryColor = isHome ? '#13111b' : '#FF008A';
         {notSameYear && - currentYear}
         Jeff Caldwell.
       </p>
-      <hr>
       <p>Made with <a href="https://astro.build">Astro</a>.</p>
       <p>Non-intrusive, non-tracking analytics by <a href="plausible.io">Plausible</a>.</p>
     </section>
@@ -60,7 +59,7 @@ const secondaryColor = isHome ? '#13111b' : '#FF008A';
 
 <style define:vars={{mainColor, secondaryColor}}>
   footer {
-    border-top: 2px dotted var(--secondaryColor);
+    border-top: 2px dotted var(--mainColor);
   }
   footer *{
     font-size: var(--size-0);
@@ -118,15 +117,18 @@ const secondaryColor = isHome ? '#13111b' : '#FF008A';
   .display {
     font-weight: 600;
     letter-spacing: 0.1em;
+    border-bottom: 0.3ex solid var(--mainColor);
+    padding-bottom: var(--size--2);
+    margin-bottom: var(--size--2);
     /* font-size: var(--size-1); */
   }
 
-  hr {
-    color: var(--mainColor);
-    background-color: var(--mainColor);
-    border-width: 0.3ex;
-    border-color: var(--mainColor);
-  }
+  /* hr { */
+  /*   color: var(--mainColor); */
+  /*   background-color: var(--mainColor); */
+  /*   border-width: 0.3ex; */
+  /*   border-color: var(--mainColor); */
+  /* } */
 
   @media(min-width: 48rem) {
     .footer-inner {
