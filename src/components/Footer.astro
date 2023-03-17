@@ -72,9 +72,9 @@ const secondaryColor = isHome ? '#13111b' : '#FF008A';
     /* text-align: center; */
   }
 
-  footer section:not(:last-of-type) {
-    border-bottom: 2px dotted var(--secondaryColor);
-  }
+  /* footer section:not(:last-of-type) { */
+  /*   border-bottom: 2px dotted var(--secondaryColor); */
+  /* } */
 
   footer section p {
     text-align: left;
@@ -98,8 +98,8 @@ const secondaryColor = isHome ? '#13111b' : '#FF008A';
   }
 
   footer li a {
-    font-family: var(--display);
-    letter-spacing: 0.1em;
+    font-family: var(--body);
+    text-transform: uppercase;
   }
 
   footer a {
@@ -116,6 +116,7 @@ const secondaryColor = isHome ? '#13111b' : '#FF008A';
   }
 
   .display {
+    font-weight: 600;
     letter-spacing: 0.1em;
     /* font-size: var(--size-1); */
   }
@@ -131,17 +132,18 @@ const secondaryColor = isHome ? '#13111b' : '#FF008A';
   @media(min-width: 48rem) {
     .footer-inner {
       display: grid;
-      grid-template-columns: repeat(3, auto);
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--size-2);
     }
 
     footer section {
-      padding: 0 var(--size-2);
+      padding: 0 var(--size-2) 0 0;
     }
 
-    footer section:not(:last-of-type) {
-      border-right: 2px dotted var(--secondaryColor);
-      border-bottom: none;
-    }
+    /* footer section:not(:last-of-type) { */
+    /*   border-right: 2px dotted var(--secondaryColor); */
+    /*   border-bottom: none; */
+    /* } */
 
     hr {
       display: block;

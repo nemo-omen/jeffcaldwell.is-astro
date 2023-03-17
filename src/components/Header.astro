@@ -29,19 +29,6 @@ const current = Astro.url.pathname;
     max-width: var(--width-max-ui);
   }
 
-  #site-brand {
-    font-size: var(--size-3);
-    text-decoration: none;
-    color: var(--primary);
-    font-weight: 800;
-    letter-spacing: 0.075em;
-  }
-
-  #site-brand:hover,
-  #site-brand:focus {
-    color: currentColor;
-  }
-
   nav {
     display: flex;
     gap: var(--size-1);
@@ -55,14 +42,13 @@ const current = Astro.url.pathname;
     align-items: center;
     line-height: 1;
     font-size: var(--size-0);
+    text-transform: uppercase;
     color: currentColor;
     text-decoration-color: transparent;
     outline-color: transparent;
     transition: text-decoration-color 0.2s ease-in-out,
                 text-underline-offset 0.2s ease-in-out
                 outline-color 0.2s ease-in-out;
-    /* font-family: var(--body); */
-    letter-spacing: 0.1em;
     padding: 0.25em 0.25em 0 0.25em;
   }
 
@@ -77,10 +63,6 @@ const current = Astro.url.pathname;
   }
 
   @media(min-width: 48rem) {
-    /* .header-inner { */
-    /*   padding-inline: var(--size-6); */
-    /* } */
-
     nav {
       gap: var(--size-2);
     }
@@ -90,10 +72,6 @@ const current = Astro.url.pathname;
   }
 
   @media(max-width: 23rem) {
-    #site-brand {
-      font-size: var(--size-2);
-    }
-
     nav {
       gap: var(--size--1);
     }

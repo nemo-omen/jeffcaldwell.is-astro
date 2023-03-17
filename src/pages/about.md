@@ -4,21 +4,23 @@ title: Jeff Caldwell | About
 summary: I'm a digital journalist in the last year of my computer science degree in San Angelo, Texas. I love making websites and writing, and I focus on creating sites that are accessible, fast, and great looking.
 ---
 
-# About Me
+<h1 class="page-title">
+About Me
+</h1>
 
 I'm a digital journalist in the last year of my computer science degree in San
 Angelo, Texas. I love making websites and writing, and I focus on creating sites
 that are accessible, fast, and great looking.
 
 I grew up in San Angelo but spent most of my adulthood living in Brooklyn, NY,
-where I worked in the print industry making cool stuff for clients like the New
-York Public Library and Last Week Tonight with John Oliver.
+where I worked in the print industry making cool stuff for clients like the _New
+York Public Library_ and _Last Week Tonight with John Oliver_.
 
 I moved back to San Angelo in 2018 to pursue my degree and got a job as a camera
-operator at the local tv news station. It was only a short time before I found
-my way into the newsroom, first as a news photographer, then as a multimedia
-journalist. Eventually I moved onto the digital team and covered local news by
-writing articles instead of shooting and editing video.
+operator at the local news station. It was only a short time before I found my
+way into the newsroom, first as a news photographer, then as a multimedia
+journalist. Eventually I moved over to the digital team and covered local news
+by writing articles instead of shooting and editing video.
 
 Now I lead a small team of digital journalists for the station's website. I'm
 not out in the field getting news as much as I used to be, but I'm proud of the

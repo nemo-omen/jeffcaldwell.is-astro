@@ -1,74 +1,64 @@
 ---
-// import { Image } from 'astro:assets';
-import { Image, Picture } from '@astrojs/image/components';
 const { frontMatter, href, type, isFirst } = Astro.props;
-const { image, title, summary } = frontMatter;
-const feature = await import(/* @vite-ignore */`../assets/images/${image.src}.webp`);
-const { src, width, height } = feature.default;
+const { title, summary, date, tags } = frontMatter;
 
 const firstClass = isFirst ? 'first' : '';
 ---
 
   <article class=`${firstClass} ${type}`>
-    <a href={href}>
-      <!--<img src={src} alt={image.alt} width={width} height={height}/>-->
-      <Picture 
-        src={feature.default}
-        alt={image.alt}
-        widths={[200, 400, 800]}
-        aspectRatio={16 / 9}
-        sizes="(max-width: 800px) 100vw, 800px"
-        fit="cover"
-        width={width}
-        height={height}
-        />
-    </a>
-
+    
     <div class="preview-content">
       <h2>
-        <a href={href}>
-            {title}
+        <a {href} class="title-link">
+          {title}
         </a>
       </h2>
-      <p>{summary} <a href={href}>Read more</a></p>
+      <div class="post-meta">
+        <time>{date.toLocaleDateString('en-us', {month: 'long', day: 'numeric', weekday: 'long', year: 'numeric'})}</time>
+        {tags && <div class="taglist">
+          {tags.map((tag: string) => <a href=`/tags/${tag.toLowerCase()}` class="tag">#{tag}</a>)}
+        </div>}
+      </div>
+      <p>{summary}</p> 
     </div>
   </article>
 
 <style>
   article {
     margin-inline: unset;
+    padding: var(--size-0);
+  }
+
+  h2 {
+    line-height: unset;
+  }
+
+  a.title-link {
+    color: var(--primary);
+    text-decoration-color: transparent;
+    transition: color 0.2s ease-in-out;
+  }
+
+  a.title-link:hover {
+    color: var(--fg);
+  }
+
+  time {
+    padding: 0;
+    margin: 0;
+    margin-bottom: var(--size--1);
+    line-height: 1;
+  }
+
+  .preview-content {
     display: grid;
-    grid-template-rows: auto 1fr;
-    gap: var(--size-3);
+    grid-template-rows: auto 1fr auto;
+    gap: var(--size--1);
   }
 
-  img {
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-  }
-
-  a {
-    display: inline-block;
-  }
-
-  /* a { */
-  /*   outline-color: var(--transparent); */
-  /*   transotion: outline-color 0.2s ease-in-out; */
-  /* } */
-  /**/
-  /* a:focus { */
-  /*   outline-color: var(--secondary); */
-  /* } */
-
-  @media(min-width: 48rem) {
-    article {
-      grid-template-columns: 2fr 3fr;
-      grid-template-rows: unset;
-      gap: var(--size-6);
-    }
-    img {
-      aspect-ratio: 4 / 3;
-    }
+  article :global(.post-meta) {
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: var(--size-2);
   }
 </style>

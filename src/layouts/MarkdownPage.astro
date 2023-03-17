@@ -22,4 +22,13 @@ const { summary } = frontmatter;
   article {
     margin-inline: unset;
   }
+
+  article :global(.page-title) {
+    margin-bottom: var(--size-6);
+  }
+
+  article > :global(p:first-of-type) {
+    font-size: var(--size-2);
+    font-style: italic;
+  }
 </style>
