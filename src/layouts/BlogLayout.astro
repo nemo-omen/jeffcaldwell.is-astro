@@ -6,12 +6,20 @@ export interface props {
   title: string;
 }
 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const {data} = Astro.props;
-
 const {title, date, tags, summary} = data;
 ---
 
 <Layout {title} description={summary}>
+  <template slot="bloghead">
+    <meta property="og:title" content={title} />
+    <meta property="og:image" content={`${title}.svg`} />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:description" content={summary} />
+    <meta property="og:locale" content="en_GB" />
+  </template>
   <main id="main">
     <article class="flow blog-post">
       <h1>{title}</h1>

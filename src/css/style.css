@@ -29,9 +29,12 @@
   --black-darker: #0a0a0f;
   --white: #f7f6f6ff;
   --white-alpha: hsl(0, 5%, 96%, 30%);
-  --red: #D4594C;
-  --red-darker: hsl(5 61% 50%);
+  --red: #FF1A00;
+  --orange: #FF4920;
+  --orangered: #FF2A00;
+  --turquoise: #44D8DB;
   --yellow: #FFE319;
+  --green: #44DBA0;
   --yellow-alpha: hsl(52, 100%, 54%, 50%);
   --magenta: #FF008A;
   --magenta-alpha: hsl(327, 100%, 50%, 50%);
@@ -57,9 +60,21 @@
   --warn: var(--magenta);
 
   /* Font aliases */
-  --display: 'Sunscy';
-  --serif: 'BespokeSerif';
-  --mono: 'IBM Plex Mono';
+  /* --display: 'Sunscy'; */
+  /* --display: 'Playfair Display', serif; */
+  --serif: 'BespokeSerif', serif;
+  --sans: 'Work Sans', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+
+  --body: var(--sans);
+  --display: var(--serif);
+
+  /* strokes and outlines */
+  --outline-thin: 0.1ex;
+  --outline-medium: 0.2ex;
+  --outline-heavy: 0.3ex;
+  --offset-regular: 0.4ex;
+  --offset-distant: 0.7ex;
 }
 
 /* * { */
@@ -67,7 +82,7 @@
 /* } */
 
 body{
-  font-family: var(--serif) serif;
+  font-family: var(--body);
   background-color: var(--bg);
   color: var(--fg);
   font-size: var(--size-1);
@@ -115,18 +130,18 @@ main {
 }
 
 code {
-  font-family: var(--mono) monospace;
+  font-family: var(--mono);
 }
 
 a {
   color: currentColor;
   transition: color 0.2s ease-in-out;
   text-decoration: underline;
-  text-decoration-thickness: 0.3ex;
-  text-underline-offset: 0.3ex;
+  text-decoration-thickness: var(--outline-medium);
+  text-underline-offset: var(--offset-regular);
   text-decoration-color: var(--secondary);
   outline-color: transparent;
-  outline-width: 0.3ex;
+  outline-width: var(--outline-thin);
   transition: text-underline-offset 0.2s ease-in-out,
               text-decoration-color 0.2s ease-in-out,
               outline-color 0.2s ease-in-out;
@@ -136,7 +151,7 @@ a {
 
 a:hover,
 a:focus {
-  text-underline-offset: 0.7ex;
+  text-underline-offset: var(--offset-distant);
   text-decoration-color: transparent;
 }
 
@@ -150,17 +165,17 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration-color: currentColor;
+  text-decoration: none;
   outline-color: transparent;
-  outline-offset: -0.3ex;
-  outline-width: 0.3ex;
+  outline-offset: calc(var(--outline-heavy) * -1);
+  outline-width: var(--outline-heavy);
   background-color: var(--accent);
   color: var(--bg);
-  font-size: var(--size-2);
+  /* font-size: var(--size-2); */
   letter-spacing: 0.05em;
   margin: 0;
-  padding: 0.25em;
-  border: 0.3ex solid var(--bg);
+  /* padding: 0.25em; */
+  border: var(--outline-heavy) solid var(--bg);
   transition: background-color 0.2s ease-in-out, 
               text-underline-offset 0.2s ease-in-out,
               text-decoration-color 0.2s ease-in-out,
@@ -187,9 +202,9 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--display), sans-serif;
+  font-family: var(--display);
   line-height: calc(1em + 0.5rem);
-  letter-spacing: 0.1em;
+  /* letter-spacing: 0.1em; */
 }
 
 h1,
@@ -231,10 +246,6 @@ blockquote {
 time {
   font-style: italic;
   color: var(--secondary);
-  /* text-decoration: underline; */
-  /* text-decoration-thickness: 0.3ex; */
-  /* text-underline-offset: 0.7ex; */
-  /* background-color: var(--secondary); */
   padding: 0.25em;
 }
 
@@ -321,10 +332,12 @@ code:not(pre>code){
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.25em 0.25em 0 0.25em;
+    padding: 0.25em;
     overflow: hidden;
-    font-family: var(--display);
+    font-family: var(--body);
     font-size: var(--size-500);
+    font-weight: 600;
+    text-transform: uppercase;
     letter-spacing: 0.1em;
     text-decoration: none;
     /* line-height: 1; */

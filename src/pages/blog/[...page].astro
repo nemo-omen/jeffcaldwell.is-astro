@@ -5,16 +5,16 @@ import Layout from '../../layouts/Layout.astro';
 import  ArticleList from '../../components/ArticleList.astro';
 import PageNav from '../../components/PageNav.astro';
 
+
 export async function getStaticPaths({paginate}) {
   let allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
-  const sorted = allBlogPosts.sort(
+  let sorted = allBlogPosts.sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
   );
   return paginate(sorted, {pageSize: 6});
 }
 
 const { page } = Astro.props;
-// console.log(page);
 const { currentPage, lastPage, url } = page;
 ---
 
@@ -22,7 +22,7 @@ const { currentPage, lastPage, url } = page;
   <main class="flow" id="main">
     <h1>Blog</h1>
     <ArticleList articles={page.data} />
-    <PageNav {currentPage} {lastPage} {url} />
+    {lastPage !== 1 && <PageNav {currentPage} {lastPage} {url} />}
   </main>
 </Layout>
 

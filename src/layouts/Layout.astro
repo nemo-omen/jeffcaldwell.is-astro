@@ -2,6 +2,8 @@
 // import '../css/reset.css';
 import '../css/fonts.css';
 import '../css/style.css';
+
+import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -12,20 +14,17 @@ export interface Props {
 
 const production = import.meta.env.MODE === 'production';
 
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
 const { title, description } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="sitemap" href="/sitemap-index.xml">
-		<meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    {production && <script defer data-domain="jeffcaldwell.is" src="https://plausible.io/js/script.js"></script>}
-		<title>{title}</title>
+		<BaseHead {title} {description}>
+      <slot name="bloghead" />
+    </BaseHead>
 	</head>
 	<body>
     <a href="#main" id="skip" class="visible-hidden">Skip to Content</a>

@@ -10,6 +10,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   // output: "server",
   site: "https://jeffcaldwell.is",
+  base: "/",
   integrations: [
     mdx(),
     image({
