@@ -4,7 +4,7 @@ date: 2023-03-01
 image:
     src: figma
     alt: A screenshot of a browser window with Figma open to a design. In the design window, four circular logos with the illustrated heads of black birds, grackles, lie in a row along the top of the screen. Each circular logo has a solid background of different colors -- yellow, red, and blue. One logo is slightly larger with a red background and the top of it is cut off by the window edge. The words "Jeff Caldwell", "JC.is", and "JC" can be seen in variations of red, yellow, blue and black on differently colored backgrounds.
-summary: Welcome to JeffCaldwell.is!
+summary: Welcome to the start of JeffCaldwell.is!
 tags: ['Hello, world']
 draft: false
 ---

@@ -60,8 +60,6 @@
   --warn: var(--magenta);
 
   /* Font aliases */
-  /* --display: 'Sunscy'; */
-  /* --display: 'Playfair Display', serif; */
   --serif: 'BespokeSerif', serif;
   --sans: 'Work Sans', sans-serif;
   --mono: 'IBM Plex Mono', monospace;
@@ -139,7 +137,6 @@ a {
   text-decoration: underline;
   text-decoration-thickness: var(--outline-medium);
   text-underline-offset: var(--offset-regular);
-  text-decoration-color: var(--secondary);
   outline-color: transparent;
   outline-width: var(--outline-thin);
   transition: text-underline-offset 0.2s ease-in-out,
@@ -152,10 +149,9 @@ a {
 a:hover,
 a:focus {
   text-underline-offset: var(--offset-distant);
-  text-decoration-color: transparent;
 }
 
-:focus {
+:focus-visible {
   outline: 0.3ex solid var(--secondary);
   outline-offset: 0.2ex;
 }
@@ -166,7 +162,6 @@ button {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  outline-color: transparent;
   outline-offset: calc(var(--outline-heavy) * -1);
   outline-width: var(--outline-heavy);
   background-color: var(--accent);
@@ -184,19 +179,18 @@ button {
               outline-color 0.2s ease-in-out;
 }
 
+button:focus-visible,
+.button:focus-visible {
+  background-color: var(--bg);
+  color: var(--secondary);
+}
+
 :hover:is(.button, button) {
   background-color: var(--bg);
-  border-color: var(--secondary);
+  border-color: var(--fg);
   color: var(--secondary);
   text-decoration-color: transparent;
 }
-
-:focus:is(button, .button) {
-  outline-color: var(--secondary);
-  background-color: var(--bg);
-  color: var(--secondary);
-}
-
 
 h1,
 h2,
@@ -249,9 +243,11 @@ blockquote {
 }
 
 time {
+  position: relative;
   font-style: italic;
   color: var(--secondary);
   padding: 0.25em;
+  background-color: transparent;
 }
 
 .flow > * + * {
@@ -362,8 +358,8 @@ code:not(pre>code){
    transform: translate(-50%, 0.5em);
    outline-color: var(--secondary);
    color: currentColor;
-   border-color: var(--primary);
-   background-color: var(--primary);
+   border-color: var(--bg);
+   background-color: var(--bg);
    opacity: 1;
   }
 
@@ -377,12 +373,15 @@ code:not(pre>code){
     justify-content: flex-start;
     align-items: center;
     gap: 1em;
+    margin: 0.25em;
   }
 
   .tag {
     text-decoration: none;
     transition: color 0.2s ease-in-out, outline-color 0.2s ease-in-out;
     color: var(--primary);
+    outline-offset: 0;
+    /* margin: 0.25em; */
   }
 
   .tag:hover,

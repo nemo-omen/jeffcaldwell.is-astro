@@ -8,7 +8,7 @@ const feature = await import(/* @vite-ignore */`../assets/images/${image!.src}.w
 const { width, height } = feature.default;
 
 ---
-<a href={url}>
+<a href={url} aria-labelledby={'#' + url}>
   <article class="card">
   <Picture 
       src={feature.default}
@@ -26,30 +26,29 @@ const { width, height } = feature.default;
       <div class="overlay"></div>
       <div class="overlay-2"></div>
       <div class="content">
-        {headingLevel === 2 && <h2 class="heading">{title}</h2>}
-        {headingLevel === 3 && <h3 class="heading">{title}</h3>}
-        {headingLevel === 4 && <h4 class="heading">{title}</h4>}
+        {headingLevel === 2 && <h2 class="heading" id={url}>{title}</h2>}
+        {headingLevel === 3 && <h3 class="heading" id={url}>{title}</h3>}
+        {headingLevel === 4 && <h4 class="heading" id={url}>{title}</h4>}
       
         <p>{summary}</p>
       </div>
 
   </article>
 </a>
+
 <style>
-a {
-}
 
 a:focus {
-  outline-thickness: var(--outline-heavy);
-  outline-offset: 0;
-  outline-color: var(--accent);
+  outline-thickness: 0.7ex; 
+  /* outline-offset: 0; */
+  outline-color: var(--primary);
 }
 .card {
   position: relative;
   isolation: isolate;
   background: var(--bg-darker);
   box-shadow: 0.5em 0.5em 1em 2px var(--bg-alpha);
-  height: 22rem;
+  height: 25rem;
 }
 
 img {
@@ -97,26 +96,23 @@ a:focus img {
     );
 }
 
-/* a:hover .overlay { */
-/*   opacity: 0.3; */
-/* } */
-
 a:hover .overlay-2,
-a:focus overlay-2 {
+a:focus .overlay-2 {
   opacity: 1;
 }
 
 .content{
   position: absolute;
-  display: grid;
-  grid-template-rows: 1fr auto 1fr;
-  grid-gap: var(--size--2);
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   padding: var(--size-0);
   overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: var(--size--2);
+  align-items: start;
 }
 
 .content p {

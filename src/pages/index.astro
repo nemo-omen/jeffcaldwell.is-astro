@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import IntroGraphic from '../components/IntroGraphic.astro';
+import Icon from '../components/Icon.astro';
 
 let allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
 let allProjectPosts = await getCollection('projects', ({data}) => data.draft !== true);
@@ -38,6 +39,12 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
     <section id="latest">
       {allPosts.map((post) => <ArticleCard data={post.data} headingLevel={3} url={'/' + post.collection + '/' + post.slug}/>)}
     </section>
+    <div class="more">
+      <a href="/blog" >
+        More posts
+        <Icon name="arrow" label="More posts" />
+      </a>
+    </div>
 	</main>
   <div class="isolate">
     <div class="noise"></div>
@@ -78,12 +85,12 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
   .button-group {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      /* gap: var(--size-0); */
       gap: var(--size-6);
     }
 
   .hint,
-  #latest {
+  #latest,
+  .more {
     grid-column: span 2;
   }
 
@@ -94,6 +101,29 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     gap: var(--size-6);
+  }
+  
+  .more {
+    display: flex;
+    justify-content: flex-end;
+    color: var(--bg);
+  }
+
+  .more a {
+    display: flex;
+    align-items: center;
+    gap: var(--size--1);
+    outline-color: var(--primary);
+  }
+
+  .more a:focus {
+    text-decoration-color: transparent;
+    color: var(--primary);
+  }
+
+  .more a:hover {
+    color: var(--primary);
+    text-decoration-color: var(--primary);
   }
 
   .isolate {
@@ -145,11 +175,6 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
     main {
       padding: var(--size-6);
     }
-    /* #latest { */
-    /*   display: grid; */
-    /*   grid-template-columns: repeat(2, 1fr); */
-    /*   gap: var(--size-6); */
-    /* } */
   }
 
   @media(min-width: 60rem) {
