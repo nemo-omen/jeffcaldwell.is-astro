@@ -1,1 +1,0 @@
-article:where(.astro-XMLPEWKR){margin-inline:unset;display:grid;grid-template-rows:auto 1fr;gap:var(--size-3)}img:where(.astro-XMLPEWKR){height:auto;aspect-ratio:16 / 9;object-fit:cover}@media (min-width: 48rem){article:where(.astro-XMLPEWKR){grid-template-columns:2fr 3fr;grid-template-rows:unset;gap:var(--size-6)}img:where(.astro-XMLPEWKR){aspect-ratio:4 / 3}}
