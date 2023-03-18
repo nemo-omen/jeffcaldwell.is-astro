@@ -78,6 +78,11 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
   .message {
     font-size: var(--size-3);
     text-wrap: balance;
+    word-wrap: break-word;
+    word-break: break-word;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
     margin: 0;
     padding: 0;
     line-height: 1.5;
