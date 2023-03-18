@@ -102,13 +102,26 @@ body{
   scrollbar-gutter: stable;
   scrollbar-color: var(--fg-alpha) var(--bg);
   overflow: scroll;
-  animation-name: fadeIn;
-  animation-duration: 0.1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-  animation-iteration-count: 1;
-  animation-delay: 0.2s;
-  opacity: 0;
+  /* animation-name: fadeIn; */
+  /* animation-duration: 0.1s; */
+  /* animation-timing-function: ease-in-out; */
+  /* animation-fill-mode: forwards; */
+  /* animation-iteration-count: 1; */
+  /* animation-delay: 0.2s; */
+  /* opacity: 0; */
+}
+
+@media screen and (max-width: 850px) {
+  body {
+    animation-name: fadeIn;
+    animation-duration: 0.1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+
 }
 
 @keyframes fadeIn {
@@ -274,10 +287,8 @@ blockquote {
 }
 
 time {
-  position: relative;
   font-style: italic;
   color: var(--secondary);
-  padding: 0.25em;
   background-color: transparent;
 }
 
@@ -403,8 +414,8 @@ code:not(pre>code){
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
     gap: 1em;
-    margin: 0.25em;
   }
 
   .tag {
@@ -455,6 +466,7 @@ code:not(pre>code){
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     background-color: transparent;
     /* padding-inline-start: 0.5em; */
     /* overflow: visible; */
@@ -463,6 +475,6 @@ code:not(pre>code){
   .taglist {
     justify-content: flex-end;
     align-items: center;
-    padding: 0.25em;
+    /* padding: 0.25em; */
   }
 }

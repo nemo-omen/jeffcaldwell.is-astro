@@ -29,16 +29,17 @@ steeped in all of the common design trends on the web. What's that mean to me?
 It means I should listen.
 
 It happened to be spring break and, for once, I took a week off of work at the
-same time. I wanted to give [Astro 2.0](https://astro.build/blog/astro-2/) a
-shot, so I started working on a new landing page. Before long I was deep into
-rewriting the whole site and here we are.
+same time school was out. I wanted to give
+[Astro 2.0](https://astro.build/blog/astro-2/) a shot, so I started working on a
+new landing page. Before long I was deep into rewriting the whole site and here
+we are.
 
 Rebuilding everything was, more or less, very straightforward. Astro's
 contributors should definitely be congratulated on the phenomenal job they've
 done in making a tool that's so intuitive and comprehensive. I'm not going to
 make any comparisons to Svelte/SvelteKit other than the documentation. The
-[Astro docs](https://docs.astro.build) are second-to-none while I've always felt
-that the Svelte docs are a little lacking.
+[Astro docs](https://docs.astro.build) are second-to-none, while I've always
+felt that the Svelte docs are a little lacking.
 
 There's still more to do. I need to work out [Open Graph](https://ogp.me/) image
 generation and I'd like to start taking part in the

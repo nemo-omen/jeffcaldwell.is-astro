@@ -5,7 +5,7 @@ const current = Astro.url.pathname;
 <header>
   <!--<a href="/" id="site-brand">JeffCaldwell.is</a>-->
   <div class="header-inner">
-    <burger-menu max-width="600">
+    <burger-menu max-width="800">
       <nav aria-label="primary">
         <ul role="list">
           <li>
@@ -16,6 +16,9 @@ const current = Astro.url.pathname;
           </li>
           <li>
             <a href="/projects" class={current === '/projects' ? 'current' : ''}>Projects</a>
+          </li>
+          <li>
+            <a href="/resume" class={current === '/resume' ? 'current' : ''}>Resume</a>
           </li>
           <li>
             <a href="/about" class={current === '/about' ? 'current' : ''}>About</a>
@@ -34,10 +37,8 @@ const current = Astro.url.pathname;
   /* header { */
   /*   transition: opacity 0.2s ease-in-out; */
   /* } */
-  @media (max-width: 650px) {
+  @media (max-width: 850px) {
     nav ul li a {
-      width: 100%;
-      max-width: var(--width-max-ui);
       animation-name: fadeIn;
       animation-duration: 0.1s;
       animation-delay: 0.1s;

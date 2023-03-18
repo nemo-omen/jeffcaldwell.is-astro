@@ -14,7 +14,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
     <div class="resume-section-content">
-      <p>Writer and supervisor with over four years of experience in digital journalism seeks to transition into technical writing and web development. Uses a unique background in design, journalism, and computer science to make great looking, accessible websites and to communicate complex ideas simply and concisely. Works with JavaScript (and loves <a href="https://svelte.dev">Svelte</a>), CSS, and responsive, semantic HTML.</p>
+      <p>Writer and supervisor with over four years of experience in digital journalism seeks to transition into technical writing and web development. Uses a unique background in design, journalism, and computer science to make great looking, accessible websites and to communicate complex ideas simply and concisely. Works with JavaScript, CSS, and responsive, semantic HTML.</p>
     </div>
   </section>
   <section>
@@ -249,6 +249,15 @@ import Layout from '../layouts/Layout.astro';
       position: -webkit-sticky;
       top: var(--size-6);
       text-align: right;
+    }
+  }
+
+  @media print {
+    :global(header) {
+      display: none;
+    }
+    h1 {
+      display: none;
     }
   }
   </style>
