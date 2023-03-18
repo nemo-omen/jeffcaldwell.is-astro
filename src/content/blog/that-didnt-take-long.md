@@ -47,4 +47,4 @@ generation and I'd like to start taking part in the
 [syndication](https://indieweb.org/2011/Publish_Then_Syndicate_and_Replicate).
 There's still so much to do!
 
-I'm looking forward to it.
+I'm really looking forward to it.
