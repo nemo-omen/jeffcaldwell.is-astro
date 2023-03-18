@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import  ArticleList from '../../components/ArticleList.astro';
 
-const allProjectPosts = await getCollection('projects');
+const allProjectPosts = await getCollection('projects', (({data}) => !data.draft));
 
 // console.log(allBlogPosts);
 ---
@@ -11,7 +11,8 @@ const allProjectPosts = await getCollection('projects');
 <Layout title="Jeff Caldwell | Projects" description="Jeff Caldwell is a web developer, writer, journalist, and student who makes fast, accessible websites and writes engaging docs and tutorials.">
   <main class="flow" id="main">
     <h1 class="page-title">Projects</h1>
-    <ArticleList articles={allProjectPosts} />
+    {(allProjectPosts.length < 1) && <div class="embarrassing"> <h2 style="text-align: center;">There's nothing here yet!</h2><p style="text-align: center;">(how embarrassing)</p></div>}
+    {(allProjectPosts.length > 0) && <ArticleList articles={allProjectPosts} />}
   </main>
 </Layout>
 
@@ -21,5 +22,12 @@ const allProjectPosts = await getCollection('projects');
   } 
   h1 {
     margin-bottom: var(--size-6);
+  }
+  .embarrassing {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 </style>
