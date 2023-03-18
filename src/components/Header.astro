@@ -71,9 +71,12 @@ const current = Astro.url.pathname;
     }
   }
 
-  @media(max-width: 23rem) {
+  @media(max-width: 25rem) {
     nav {
-      gap: var(--size--1);
+      /* flex-direction: column; */
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--size-2);
     }
 
     nav a {
