@@ -31,7 +31,7 @@ const { tag, blogposts } = Astro.props;
 
 <Layout title=`Jeff Caldwell | ${tag}`>
   <main class="flow" id="main" tabindex="-1">
-    <h1>Posts tagged {tag}</h1>
+    <h1 class="page-title">Posts tagged {tag}</h1>
     <ArticleList articles={blogposts} />
   </main>
 </Layout>

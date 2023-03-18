@@ -258,8 +258,13 @@ h1 {
 }
 
 .page-title {
-  font-size: var(--size-6);
   text-align: center;
+  font-size: var(--size-6);
+  margin-bottom: var(--size-6);
+}
+
+.post-title {
+  font-size: var(--size-4);
 }
 
 h2 {

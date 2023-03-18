@@ -22,7 +22,7 @@ const {title, date, tags, summary} = data;
   </template>
   <main id="main" tabindex="-1">
     <article class="flow blog-post">
-      <h1>{title}</h1>
+      <h1 class="post-title">{title}</h1>
       <div class="post-meta">
         <time>{date.toLocaleDateString('en-us', {weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'})}</time>
         <div class="taglist">

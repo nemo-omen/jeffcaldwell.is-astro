@@ -13,7 +13,7 @@ const {title, date, tags, summary} = data;
 <Layout {title} description={summary}>
   <main id="main" tabindex="-1">
     <article class="flow blog-post">
-      <h1>{title}</h1>
+      <h1 class="post-title">{title}</h1>
       <time>{data.date.toLocaleDateString('en-us', {weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'})}</time>
       <slot />
     </article>
