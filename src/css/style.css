@@ -260,7 +260,7 @@ h1 {
 .page-title {
   text-align: center;
   font-size: var(--size-6);
-  margin-bottom: var(--size-6);
+  margin-bottom: var(--size-9);
 }
 
 .post-title {
