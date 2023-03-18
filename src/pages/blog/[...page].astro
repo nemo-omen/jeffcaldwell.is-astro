@@ -19,7 +19,7 @@ const { currentPage, lastPage, url } = page;
 ---
 
 <Layout title="Jeff Caldwell | Blog" description="Jeff Caldwell is a web developer, writer, journalist, and student who makes fast, accessible websites and writes engaging docs and tutorials.">
-  <main class="flow" id="main">
+  <main class="flow" id="main" tabindex="-1">
     <h1 class="page-title">Blog</h1>
     <ArticleList articles={page.data} />
     {lastPage !== 1 && <PageNav {currentPage} {lastPage} {url} />}

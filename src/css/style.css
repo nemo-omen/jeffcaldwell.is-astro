@@ -24,10 +24,18 @@
   --flow-space: var(--size-2);
 
   --black: #13111b;
+  --black-hsl: 252, 23%, 9%;
+  --black-h: 252;
+  --black-s: 23%;
+  --black-l: 9%;
   --black-alpha: hsl(252, 22%, 8%, 40%);
   --black-alpha-2: hsl(252, 22%, 8%, 60%);
+
   --black-darker: #0a0a0f;
+  --black-darker-hsl: 240, 20%, 5%;
   --white: #f7f6f6ff;
+  --white-hsl: 0, 5%, 96%;
+  --white-hs: 0, 5%;
   --white-alpha: hsl(0, 5%, 96%, 30%);
   --red: #FF1A00;
   --orange: #FF4920;
@@ -45,10 +53,16 @@
   --blue-lighter: hsl(182 62% 60%);
 
   --bg: var(--black);
+  --bg-hsl: var(--black-hsl);
+
   --bg-darker: var(--black-darker);
+  --bg-darker-hsl: var(--black-darker-hsl);
+
   --bg-alpha: var(--black-alpha);
   --bg-alpha-2: var(--black-alpha-2);
   --fg: var(--white);
+  --fg-hsl: var(--white-hsl);
+  --fg-hs: var(--white-hs);
   --fg-alpha: var(--white-alpha);
   --primary: var(--magenta);
   --primary-alpha: var(--magenta-alpha);
@@ -327,7 +341,7 @@ code:not(pre>code){
     width: auto;
   }
 
-  #skip {
+  .skip-link {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -355,7 +369,7 @@ code:not(pre>code){
     z-index: 1;
   }
 
-  #skip:focus {
+  .skip-link:focus {
    transform: translate(-50%, 0.5em);
    outline-color: var(--secondary);
    color: currentColor;

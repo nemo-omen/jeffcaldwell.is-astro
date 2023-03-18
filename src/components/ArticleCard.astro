@@ -126,7 +126,7 @@ a:focus .overlay-2 {
 
 a:hover .content p,
 a:focus .content p{
-  transform: translate(0);
+  transform: translateY(0);
   opacity: 1;
 }
 
@@ -138,6 +138,13 @@ a:focus .content p{
 .content p {
   font-size: var(--size-0);
   line-height: 1.5;
+}
+
+@media(max-width: 1079px) {
+  .content p {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 </style>
