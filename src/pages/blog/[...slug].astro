@@ -26,7 +26,7 @@ const { width, height } = feature.default;
 const { Content } = await entry!.render();
 ---
 
-<BlogLayout data={entry!.data}>
+<BlogLayout data={entry!.data} slug={entry!.slug}>
 <div>
   <!--<Picture 
     src={feature.default}

@@ -1,7 +1,6 @@
 import satori from "satori";
 import { html } from "satori-html";
 import { getCollection, getEntryBySlug } from "astro:content";
-import fs from "fs";
 
 const bespokeResponse = await fetch(
   "https://jeffcaldwell.is/fonts/BespokeSerif/Fonts/WEB/fonts/BespokeSerif-Extrabold.woff",
@@ -19,9 +18,6 @@ export async function get({ params }) {
   const { title, summary, date } = post.data;
   const localeDate = date.toLocaleDateString("en-us", { dateStyle: "full" });
   console.log(bespokeArrayBuffer);
-
-  // const markup = `<h1>${title}</h1>
-  //   <p>${summary}</p>`;
 
   const svg = await satori(
     <div style={{ backgroundColor: "black", color: "white" }}>

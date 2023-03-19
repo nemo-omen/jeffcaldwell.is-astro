@@ -1,0 +1,14 @@
+---
+const { title, summary, slug } = Astro.props;
+---
+
+<meta property="og:title" content={title} />
+<meta property="og:type" content="website" />
+<meta property="og:image" content={'https://jeffcaldwell.is/og/' + slug + '.svg'} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={title + ", " + summary} />
+<meta property="og:image:type" content="image/svg+xml" />
+<meta property="og:url" content="https://jeffcaldwell.is" />
+<meta property="og:description" content={summary} />
+<meta property="og:locale" content="en_GB" />
