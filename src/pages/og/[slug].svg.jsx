@@ -17,12 +17,15 @@ export async function get({ params }) {
   const post = await getEntryBySlug("blog", params.slug);
   const { title, summary, date } = post.data;
   const localeDate = date.toLocaleDateString("en-us", { dateStyle: "full" });
-  console.log(bespokeArrayBuffer);
 
   const svg = await satori(
-    <div style={{ backgroundColor: "black", color: "white" }}>
-      <h1>{{ title }}</h1>
-      <p>{{ summary }}</p>
+    <div style={{ backgroundColor: "black", flexDirection: "column" }}>
+      <h1
+        style={{ color: "white", fontFamily: "Bespoke Serif", fontWeight: 800 }}
+      >
+        {{ title }}
+      </h1>
+      <p style={{ color: "white" }}>{{ summary }}</p>
     </div>,
     {
       width: dims.width,
