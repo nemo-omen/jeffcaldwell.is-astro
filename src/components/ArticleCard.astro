@@ -43,17 +43,14 @@ const firstClass = index === 0 ? 'feature' : 'post';
   align-items: start;
 }
 
-a {
+.card a {
   transition: color 0.2s ease-in-out,
               outline-color 0.2s ease-in-out;
-}
-
-a:hover {
-  color: var(--primary);
-}
-
-a {
   text-decoration: none;
+}
+
+.card a:hover {
+  color: var(--primary);
 }
 
 .card .tag {
