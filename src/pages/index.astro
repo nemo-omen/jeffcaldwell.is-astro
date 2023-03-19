@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import IntroGraphic from '../components/IntroGraphic.astro';
 import Icon from '../components/Icon.astro';
+import SiteOg from '../components/SiteOg.astro';
 
 let allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
 
@@ -13,6 +14,7 @@ let allPosts = [...allBlogPosts]
 ---
 
 <Layout title="Jeff Caldwell" description="Jeff Caldwell is a web developer, writer, journalist, and student who makes fast, accessible websites and writes engaging docs and tutorials.">
+  <SiteOg slot="homehead" />
 	<main id="main" tabindex="-1">
     <div class="hero">
       <h1>
