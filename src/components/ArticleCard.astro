@@ -32,7 +32,7 @@ const firstClass = index === 0 ? 'feature' : 'post';
 
 .card {
   container: card / inline-size;
-  background-color: hsl(var(--bg-hsl), 50%);
+  background-color: hsl(var(--bg-darker-hsl), 50%);
   box-shadow: 0.5em 0.5em 1em 2px var(--bg-alpha-2);
   height: 20rem;
   padding: var(--size-0);
@@ -56,11 +56,11 @@ a {
   text-decoration: none;
 }
 
-:global(.tag) {
+.card .tag {
   color: var(--secondary);
 }
 
-:global(.tag:hover) {
+.card .tag:hover {
   color: var(--primary);
 }
 
