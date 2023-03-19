@@ -193,8 +193,8 @@ a:focus {
 }
 
 :focus-visible {
-  outline: 0.3ex solid var(--secondary);
-  outline: 0.3ex auto -webkit-focus-ring-color;
+  outline: 0.2ex solid var(--secondary);
+  outline: 0.2ex auto -webkit-focus-ring-color;
   outline-offset: 0.2ex;
 }
 
@@ -204,18 +204,15 @@ button {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  outline-offset: calc(var(--outline-heavy) * -1);
-  outline-width: var(--outline-heavy);
-  background-color: var(--accent);
+  outline-offset: calc(var(--outline-medium) * -1);
+  outline-width: var(--outline-medium);
+  background-color: var(--secondary);
   color: var(--bg);
-  /* font-size: var(--size-2); */
   letter-spacing: 0.05em;
-  margin: 0;
-  /* padding: 0.25em; */
-  border: var(--outline-heavy) solid var(--bg);
+  font-weight: 500;
+  padding: 0.25em;
+  border: var(--outline-medium) solid var(--bg);
   transition: background-color 0.2s ease-in-out, 
-              text-underline-offset 0.2s ease-in-out,
-              text-decoration-color 0.2s ease-in-out,
               border-color 0.2s ease-in-out,
               color 0.2s ease-in-out,
               outline-color 0.2s ease-in-out;
@@ -223,13 +220,13 @@ button {
 
 button:focus-visible,
 .button:focus-visible {
-  background-color: var(--bg);
   color: var(--secondary);
+  background-color: hsl(var(--bg-hsl), 70%);
 }
 
 :hover:is(.button, button) {
-  background-color: var(--bg);
-  border-color: var(--fg);
+  background-color: hsl(var(--bg-hsl), 70%);
+  border-color: var(--secondary);
   color: var(--secondary);
   text-decoration-color: transparent;
 }
@@ -425,7 +422,7 @@ code:not(pre>code){
     text-decoration: none;
     transition: color 0.2s ease-in-out, outline-color 0.2s ease-in-out;
     color: var(--primary);
-    outline-offset: 0;
+    /* outline-offset: 0; */
     /* margin: 0.25em; */
   }
 

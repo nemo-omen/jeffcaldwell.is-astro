@@ -130,17 +130,19 @@ let allPosts = [...allBlogPosts]
     display: flex;
     align-items: center;
     gap: var(--size--1);
-    outline-color: var(--primary);
+    outline-color: var(--fg);
+    padding: 0.25em;
+    outline-offset: 0;
   }
 
   .more a:focus {
     text-decoration-color: transparent;
-    color: var(--primary);
+    background-color: hsl(var(--bg-hsl), 40%);
+    color: var(--fg);
   }
 
   .more a:hover {
-    color: var(--primary);
-    text-decoration-color: var(--primary);
+    color: var(--fg);
   }
 
   .isolate {
