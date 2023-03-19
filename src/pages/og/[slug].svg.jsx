@@ -20,24 +20,27 @@ export async function get({ params }) {
   const localeDate = date.toLocaleDateString("en-us", { dateStyle: "full" });
   console.log(bespokeArrayBuffer);
 
-  const markup =
-    html`<div style="display: flex; flex-direction: column; width: ${dims.width}px; height: ${dims.height}px; background-image: url('https://jeffcaldwell.is/images/OGBG.svg')">
-    <h1>${title}</h1>
-    <p>${summary}</p>
-  </div>`;
+  // const markup = `<h1>${title}</h1>
+  //   <p>${summary}</p>`;
 
-  const svg = await satori(markup, {
-    width: dims.width,
-    height: dims.height,
-    fonts: [
-      {
-        name: "Bespoke Serif",
-        data: bespokeArrayBuffer,
-        weight: 700,
-        style: "normal",
-      },
-    ],
-  });
+  const svg = await satori(
+    <div style={{ backgroundColor: "black", color: "white" }}>
+      <h1>{{ title }}</h1>
+      <p>{{ summary }}</p>
+    </div>,
+    {
+      width: dims.width,
+      height: dims.height,
+      fonts: [
+        {
+          name: "Bespoke Serif",
+          data: bespokeArrayBuffer,
+          weight: 700,
+          style: "normal",
+        },
+      ],
+    },
+  );
 }
 
 export async function getStaticPaths() {
