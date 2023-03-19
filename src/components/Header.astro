@@ -73,11 +73,11 @@ img {
     align-items: stretch;
   }
 
-  a {
+  header a {
     font-size: var(--size-1);
   }
 
-  nav ul li a {
+  header nav ul li a {
     line-height: 1;
     font-size: var(--size-1);
     font-weight: 400;
@@ -102,11 +102,11 @@ img {
   }
 
   @container (max-width: 600px) {
-    a {
+    header nav ul li a {
       font-size: var(--size-0);
     }
 
-    ul {
+    header nav ul {
       gap: var(--size-1);
     }
   }
@@ -116,7 +116,7 @@ img {
       gap: var(--size--1);
     }
 
-   ul {
+   header nav ul {
     gap: var(--size--2);
    } 
   }
@@ -129,11 +129,11 @@ img {
     padding: var(--size-1);
   }
 
-  nav {
+  header nav {
     width: 100%;
   }
 
-  ul {
+  header ul {
     /* gap: 0.25em var(--size--2); */
     justify-content: space-between;
     width: 100%;

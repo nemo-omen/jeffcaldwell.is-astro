@@ -53,8 +53,13 @@ const firstClass = index === 0 ? 'feature' : 'post';
   color: var(--primary);
 }
 
+.card .taglist {
+  gap: 0 var(--size-0);
+}
+
 .card .tag {
   color: var(--secondary);
+  font-size: var(--size-0);
 }
 
 .card .tag:hover {
@@ -78,8 +83,14 @@ const firstClass = index === 0 ? 'feature' : 'post';
   .card {
     gap: var(--size-0);
   }
-  .card p {
+  
+  .card p,
+  .card .tag {
     font-size: var(--size-1);
+  }
+
+  .card .taglist {
+    gap: var(--size-1);
   }
 
   .card :is(h2, h3, h4) {
@@ -91,8 +102,14 @@ const firstClass = index === 0 ? 'feature' : 'post';
   .card {
     gap: var(--size-1);
   }
-  .card p {
+
+  .card p,
+  .card .tag {
     font-size: var(--size-2);
+  }
+
+  .card .taglist {
+    gap: var(--size-2);
   }
 
   .card :is(h2, h3, h4) {
