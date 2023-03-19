@@ -6,10 +6,9 @@ import IntroGraphic from '../components/IntroGraphic.astro';
 import Icon from '../components/Icon.astro';
 
 let allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
-let allProjectPosts = await getCollection('projects', ({data}) => data.draft !== true);
 
-let allPosts = [...allBlogPosts, ...allProjectPosts]
-  .sort((a, b) => b.data.date - a.data.date)
+let allPosts = [...allBlogPosts]
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 6);
 ---
 
@@ -33,11 +32,11 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
     </div>
 
     <div class="hint">
-      <h2>Featured Posts</h2>
+      <h2>Latest Posts</h2>
     </div>
 
     <section id="latest">
-      {allPosts.map((post) => <ArticleCard data={post.data} headingLevel={3} url={'/' + post.collection + '/' + post.slug}/>)}
+      {allPosts.map((post, index) => <ArticleCard data={post.data} {index} headingLevel={3} url={'/' + post.collection + '/' + post.slug}/>)}
     </section>
     <div class="more">
       <a href="/blog" >
@@ -60,6 +59,7 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
   }
 
   main {
+    container: main / inline-size;
     display: flex;
     flex-direction: column;
     width: 100vw;
@@ -104,10 +104,20 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
   .hint {
     border-bottom: var(--outline-medium) solid var(--fg);
   }
+
   #latest {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    display: flex;
+    flex-direction: column;
+    /* grid-template-columns: 1fr; */
     gap: var(--size-6);
+  }
+
+  @container (min-width: 800px) {
+    #latest {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--size-6);
+    }
   }
   
   .more {
@@ -154,24 +164,28 @@ let allPosts = [...allBlogPosts, ...allProjectPosts]
   }
 
   .noise {
-    filter: contrast(130%);
+    filter: contrast(120%);
     background-color: var(--bg);
     background:
       linear-gradient(
         0deg,
         var(--secondary),
-        var(--secondary-alpha-2),
-        var(--secondary-alpha),
+        /* var(--secondary-alpha-2), */
+        /* var(--primary), */
         var(--bg-alpha-2),
-        var(--bg),
-        var(--bg)
+        /* var(--bg), */
+        var(--bg-darker)
       ),
       url('/images/noise.svg');
   }
 
   .overlay {
-    background: var(--secondary);
-    mix-blend-mode: multiply;
+    background: var(--primary);
+    /* mix-blend-mode: multiply; */
+    mix-blend-mode:overlay;
+
+    /* Use this blending mode for a nice light, warm theme */
+    /* mix-blend-mode: exclusion; */
   }
 
   @media(max-width: 25rem) {

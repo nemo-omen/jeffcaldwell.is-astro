@@ -76,8 +76,29 @@
 
   /* Font aliases */
   --serif: 'BespokeSerif', serif;
-  --sans: 'Work Sans', sans-serif;
-  --mono: 'IBM Plex Mono', monospace;
+  /* --sans: 'Work Sans', sans-serif; */
+  --sans: system-ui, 
+             -apple-system, BlinkMacSystemFont, 
+             "Segoe UI", 
+             "Roboto", 
+             "Oxygen", 
+             "Ubuntu", 
+             "Cantarell", 
+             "Fira Sans", 
+             "Droid Sans", 
+             "Helvetica Neue", 
+             Arial, sans-serif;
+  /* --mono: 'IBM Plex Mono', monospace; */
+  --mono: ui-monospace, 
+             Menlo, Monaco, 
+             "Cascadia Mono", "Segoe UI Mono", 
+             "Roboto Mono", 
+             "Oxygen Mono", 
+             "Ubuntu Monospace", 
+             "Source Code Pro",
+             "Fira Mono", 
+             "Droid Sans Mono", 
+             "Courier New", monospace;
 
   --body: var(--sans);
   --display: var(--serif);
@@ -286,7 +307,7 @@ time {
   --flow-space: var(--size--1);
 }
 
-article {
+article:not(.card) {
   max-width: 65ch;
   margin-inline: auto;
 }
@@ -382,8 +403,8 @@ code:not(pre>code){
    transform: translate(-50%, 0.5em);
    outline-color: var(--secondary);
    color: currentColor;
-   border-color: var(--bg);
-   background-color: var(--bg);
+   /* border-color: var(--bg); */
+   /* background-color: var(--bg); */
    opacity: 1;
   }
 
