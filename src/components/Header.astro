@@ -1,96 +1,86 @@
 ---
+// import BurgerMenu from './BurgerMenu.svelte';
 const current = Astro.url.pathname;
 ---
 
-<header>
+<header role="banner">
+  <a href="/">
+    <img src="/Grackle.svg" width="100" height="100" alt="A grackle." />
+  </a>
   <!--<a href="/" id="site-brand">JeffCaldwell.is</a>-->
-  <div class="header-inner">
-    <burger-menu max-width="800">
-      <nav aria-label="primary">
-        <ul role="list">
-          <li>
-            <a href="/" class={current === '/' ? 'current' : ''}>Home</a>
-          </li>
-          <li>
-            <a href="/blog" class={current === '/blog' ? 'current' : ''}>Blog</a>
-          </li>
-          <li>
-            <a href="/projects" class={current === '/projects' ? 'current' : ''}>Projects</a>
-          </li>
-          <li>
-            <a href="/resume" class={current === '/resume' ? 'current' : ''}>Resume</a>
-          </li>
-          <li>
-            <a href="/about" class={current === '/about' ? 'current' : ''}>About</a>
-          </li>
-        </ul>
-      </nav>
-    </burger-menu>
-  </div>
+  <!--<div class="header-inner">-->
+  <nav aria-label="primary">
+    <ul role="list">
+      <li>
+        <a href="/" class={current === '/' ? 'current' : ''}>Home</a>
+      </li>
+      <li>
+        <a href="/blog" class={current === '/blog' ? 'current' : ''}>Blog</a>
+      </li>
+      <li>
+        <a href="/projects" class={current === '/projects' ? 'current' : ''}>Projects</a>
+      </li>
+      <li>
+        <a href="/about" class={current === '/about' ? 'current' : ''}>About</a>
+      </li>
+    </ul>
+  </nav>
+  <!--</div>-->
 </header>
 
-<script>
-  import BurgerMenu from './burger-menu.js';
-</script>
 
 <style>
-  /* header { */
-  /*   transition: opacity 0.2s ease-in-out; */
-  /* } */
-  @media (max-width: 850px) {
-    nav ul li a {
-      animation-name: fadeIn;
-      animation-duration: 0.1s;
-      animation-delay: 0.1s;
-      animation-iteration-count: 1;
-      animation-fill-mode: forwards;
-      opacity: 0;
-    }
-  }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: var(--size-2);
+  gap: var(--size-1);
+  container: header / inline-size;
+}
 
-  /* @keyframes fadeIn { */
-  /*   0% { */
-  /*     opacity: 0; */
-  /*   } */
-  /*   100% { */
-  /*     opacity: 1; */
-  /*   } */
-  /* } */
+img {
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  background-color: var(--primary);
+}
 
   nav {
-    width: 100%;
-    top: 0;
-    left: 0;
+    margin: 0;
+    padding: 0;
   }
-
   ul {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: var(--size-3) var(--size-6);
+    flex-direction: row;
+    gap: var(--size-2);
+    justify-content: flex-end;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  nav ul li {
-    margin: 0.1em;
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  a {
+    font-size: var(--size-1);
   }
 
   nav ul li a {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     line-height: 1;
     font-size: var(--size-1);
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 400;
     color: currentColor;
     text-decoration-color: transparent;
     outline-color: transparent;
     transition: text-decoration-color 0.2s ease-in-out,
                 text-underline-offset 0.2s ease-in-out,
                 outline-color 0.2s ease-in-out;
+                padding: 0.25em 0;
   }
 
   nav a:hover,
@@ -104,120 +94,43 @@ const current = Astro.url.pathname;
     text-decoration-color: transparent;
   }
 
-  :global(.burger-menu__trigger) {
-    display: none;
+  @container (max-width: 600px) {
+    a {
+      font-size: var(--size-0);
+    }
+
+    ul {
+      gap: var(--size-1);
+    }
   }
 
-  :global(.burger-menu__bar),
-  :global(.burger-menu__bar::before),
-  :global(.burger-menu__bar::after) {
-    display: block;
-    width: 24px;
-    height: 3px;
-    background: var(--fg);
-    border: 1px solid var(--fg);
-    position: absolute;
-    border-radius: 3px;
-    left: 50%;
-    margin-left: -12px;
-    transition: transform 0.2s ease-in-out;
+  @container (max-width: 400px) {
+    header {
+      gap: var(--size--1);
+    }
+
+   ul {
+    gap: var(--size--2);
+   } 
   }
 
-  :global(.burger-menu__bar) {
-    top: 50%;
-    transform: translateY(-50%);
+@media (max-width: 509px) {
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: var(--size-1);
   }
 
-  :global(.burger-menu__bar::before),
-  :global(.burger-menu__bar::after) {
-    content: '';
-  }
-
-  :global(.burger-menu__bar::before) {
-    top: -8px;
-  }
-
-  :global(.burger-menu__bar::after) {
-    bottom: -8px;
-  }
-
-  /* :global(.burger-menu[status="open"]) { */
-  /*   position: fixed; */
-  /*   z-index: 100; */
-  /* } */
-
-  :global(.burger-menu[enabled='true'] .burger-menu__trigger) {
-    display: block;
-    width: 2rem;
-    height: 2rem; /* Nice big tap target */
-    position: relative;
-    z-index: 2;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-  }
-
-  :global(.burger-menu[enabled='true'] .burger-menu__panel) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    /* right: 0; */
-    /* bottom: 0; */
-    padding: 5rem 1.5rem 2rem 1.5rem;
+  nav {
     width: 100%;
-    height: 100%;
-    visibility: hidden;
-    opacity: 0;
-    background: var(--bg-darker);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    z-index: 1;
   }
 
-  :global(.burger-menu[enabled='true'] nav ul) {
-    display: block;
+  ul {
+    /* gap: 0.25em var(--size--2); */
+    justify-content: space-between;
+    width: 100%;
   }
-
-  :global(.burger-menu[enabled='true'] nav ul > * + *) {
-    margin-top: 2rem;
-  }
-
-  :global(.burger-menu[enabled='true'] nav li) {
-    font-size: 1.5rem;
-  }
-
-  :global(.burger-menu[enabled='true'][status='open'] .burger-menu__panel) {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 400ms ease;
-  }
-
-  :global(.burger-menu[enabled='true'][status='closed'] .burger-menu__panel > *) {
-    opacity: 0;
-    transform: translateY(5rem);
-  }
-
-  :global(.burger-menu[enabled='true'][status='open'] .burger-menu__panel > *) {
-    transform: translateY(0);
-    opacity: 1;
-    transition: 
-      transform 200ms cubic-bezier(0.17, 0.67, 0, 0.87) 200ms, 
-      opacity 200ms ease 200ms;
-  }
-
-  :global(.burger-menu[enabled='true'][status='open'] .burger-menu__bar::before) {
-    top: 0;
-    transform: rotate(45deg);
-  }
-
-  :global(.burger-menu[enabled='true'][status='open'] .burger-menu__bar::after) {
-    top: 0;
-    transform: rotate(-45deg);
-  }
-
-  :global(.burger-menu[enabled='true'][status='open'] .burger-menu__bar) {
-    background: transparent;
-    border-color: transparent;
-    transform: rotate(180deg);
-  }
-</style>
+}
+  
+ </style>

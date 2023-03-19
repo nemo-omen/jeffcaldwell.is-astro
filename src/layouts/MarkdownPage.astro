@@ -6,8 +6,8 @@ export interface props {
   summary: string;
 }
 
-const {title, frontmatter} = Astro.props;
-const { summary } = frontmatter;
+const {frontmatter} = Astro.props;
+const { title, summary, file, url } = frontmatter;
 ---
 
 <Layout {title} description={summary}>

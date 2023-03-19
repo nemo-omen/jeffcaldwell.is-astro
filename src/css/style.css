@@ -53,6 +53,7 @@
   --blue-lighter: hsl(182 62% 60%);
 
   --bg: var(--black);
+  /* --bg: var(--black-darker); */
   --bg-hsl: var(--black-hsl);
 
   --bg-darker: var(--black-darker);
@@ -89,10 +90,6 @@
   --offset-distant: 0.7ex;
 }
 
-/* * { */
-/*   box-sizing: border-box; */
-/* } */
-
 body{
   font-family: var(--body);
   background-color: var(--bg);
@@ -102,26 +99,6 @@ body{
   scrollbar-gutter: stable;
   scrollbar-color: var(--fg-alpha) var(--bg);
   overflow: scroll;
-  /* animation-name: fadeIn; */
-  /* animation-duration: 0.1s; */
-  /* animation-timing-function: ease-in-out; */
-  /* animation-fill-mode: forwards; */
-  /* animation-iteration-count: 1; */
-  /* animation-delay: 0.2s; */
-  /* opacity: 0; */
-}
-
-@media screen and (max-width: 850px) {
-  body {
-    animation-name: fadeIn;
-    animation-duration: 0.1s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
-    animation-delay: 0.2s;
-    opacity: 0;
-  }
-
 }
 
 @keyframes fadeIn {

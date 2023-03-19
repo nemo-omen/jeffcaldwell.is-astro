@@ -106,14 +106,14 @@ class BurgerMenu extends HTMLElement {
       case "closed":
         this.trigger.setAttribute("aria-expanded", "false");
         this.trigger.setAttribute("aria-label", "Open menu");
-        document.body.style.overflow = "auto";
+        // document.body.style.overflow = "auto";
         break;
       case "open":
         /* falls through */
       case "initial":
         this.trigger.setAttribute("aria-expanded", "true");
         this.trigger.setAttribute("aria-label", "Close menu");
-        document.body.style.overflow = "hidden";
+        // document.body.style.overflow = "hidden";
         break;
     }
   }
