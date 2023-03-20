@@ -1,6 +1,5 @@
 import { getCollection, getEntryBySlug } from "astro:content";
 import satori from "satori";
-import { html } from "satori-html";
 import { readFileSync } from "fs";
 import { join, resolve } from "path";
 
@@ -15,13 +14,6 @@ export async function get({ params }) {
   const entry = await getEntryBySlug("blog", params.slug);
   const { title, summary } = entry.data;
 
-  const markup = html`
-    <div style="background-color: #FF008A; display: flex; flex-direction: column;">
-      <h1 style="color: white; font-size: 64px">${title}</h1>
-      <p style="color: #f7f6f6; font-family: sans; font-size: 3rem">${summary}</p>
-    </div>
-  `;
-
   const svg = await satori(
     {
       type: "div",
@@ -33,7 +25,7 @@ export async function get({ params }) {
           background: "#13111b",
           flexDirection: "column",
           padding: 32,
-          gap: 24,
+          gap: 8,
         },
         children: [
           {
@@ -41,8 +33,10 @@ export async function get({ params }) {
             props: {
               style: {
                 position: "absolute",
-                top: 0,
-                left: 0,
+                bottom: 0,
+                right: 0,
+                width: 840,
+                height: 441,
               },
               src:
                 "https://raw.githubusercontent.com/nemo-omen/jeffcaldwell.is-astro/main/public/images/OGBG.svg",
@@ -52,36 +46,36 @@ export async function get({ params }) {
             type: "h1",
             props: {
               style: {
-                fontSize: 72,
-                color: "#FF008A",
+                fontSize: 118,
+                color: "#f7f6f6",
                 fontFamily: "Bespoke Serif",
                 fontWeight: 700,
                 margin: 0,
-                lineHeight: 1,
+                // lineHeight: 1,
                 letterSpacing: "0.075em",
               },
               children: title,
             },
           }, // </h1>
-          {
-            type: "p",
-            props: {
-              style: {
-                fontSize: 56,
-                color: "#f7f6f6",
-                fontWeight: 400,
-                fontFamily: "Work Sans",
-                lineHeight: 1.8,
-                textShadow: "2px 2px 2px #13111b",
-              },
-              children: summary,
-            },
-          }, // </p>
+          // {
+          //   type: "p",
+          //   props: {
+          //     style: {
+          //       fontSize: 56,
+          //       color: "#f7f6f6",
+          //       fontWeight: 400,
+          //       fontFamily: "Work Sans",
+          //       lineHeight: 1.8,
+          //       textShadow: "2px 2px 2px #13111b",
+          //     },
+          //     children: summary,
+          //   },
+          // }, // </p>
           {
             type: "h2",
             props: {
               style: {
-                fontSize: 56,
+                fontSize: 64,
                 fontWeight: 700,
                 color: "#FF008A",
                 fontFamily: "Bespoke Serif",
