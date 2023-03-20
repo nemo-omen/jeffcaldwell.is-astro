@@ -3,7 +3,7 @@ import tokyonight from "./tokyonight.json";
 import mdx from "@astrojs/mdx";
 import image from "@astrojs/image";
 import sitemap from "@astrojs/sitemap";
-
+import { hexLoader } from "./src/utils/hexloader.js";
 // import vercel from "@astrojs/vercel/serverless";
 
 import svelte from "@astrojs/svelte";
@@ -13,16 +13,24 @@ export default defineConfig({
   // output: "server",
   site: "https://jeffcaldwell.is",
   base: "/",
-  integrations: [mdx(), image({
-    serviceEntryPoint: "@astrojs/image/sharp"
-  }), sitemap(), svelte()],
+  integrations: [
+    mdx(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+    sitemap(),
+    svelte(),
+  ],
   // experimental: {
   //   assets: true,
   // },
   markdown: {
     shikiConfig: {
-      theme: tokyonight
-    }
-  }
+      theme: tokyonight,
+    },
+  },
+  vite: {
+    plugins: [hexLoader],
+  },
   // adapter: vercel()
 });

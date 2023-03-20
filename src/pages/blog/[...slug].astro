@@ -5,7 +5,7 @@ import type { CollectionEntry } from 'astro:content';
 import BlogLayout from '../../layouts/BlogLayout.astro';
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  entry: CollectionEntry<'blog'>;
 }
 
 export async function getStaticPaths() {
