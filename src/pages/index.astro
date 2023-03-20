@@ -57,7 +57,6 @@ let allPosts = [...allBlogPosts]
 
   body {
     position: relative;
-    background-color: var(--bg);
   }
 
   main {
@@ -148,7 +147,7 @@ let allPosts = [...allBlogPosts]
   }
 
   .isolate {
-    background-color: var(--bg);
+    background-color: var(--bg-darker);
     position: absolute;
     top: 0;
     left: 0;
@@ -169,15 +168,17 @@ let allPosts = [...allBlogPosts]
 
   .noise {
     filter: contrast(120%);
-    background-color: var(--bg);
+    /* background-color: var(--bg); */
     background:
       linear-gradient(
         0deg,
         var(--secondary),
         /* var(--secondary-alpha-2), */
         /* var(--primary), */
-        var(--bg-alpha-2),
+        /* var(--bg-alpha-2), */
         /* var(--bg), */
+        hsl(var(--bg-darker-hsl), 60%),
+        hsl(var(--bg-darker-hsl), 80%),
         var(--bg-darker)
       ),
       url('/images/noise.svg');

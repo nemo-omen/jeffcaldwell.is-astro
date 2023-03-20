@@ -113,7 +113,7 @@
 
 body{
   font-family: var(--body);
-  background-color: var(--bg);
+  background-color: var(--bg-darker);
   color: var(--fg);
   font-size: var(--size-1);
   scrollbar-width: thin;
