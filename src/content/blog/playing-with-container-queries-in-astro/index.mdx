@@ -11,6 +11,8 @@ import ParentComponent from './_ParentComponent.astro';
 
 This is some test content to make sure we're still in good shape.
 
+<figure style="font-family: var(--mono); border: 1px solid hsl(var(--fg-hsl), 30%); padding: var(--size-0);">
+<figcaption style="color: var(--secondary);">Basic .mdx post with local components</figcaption>
 <FileTree tree={
   [
     {
@@ -23,6 +25,8 @@ This is some test content to make sure we're still in good shape.
     },
   ]
 }/>
+</figure>
+
 
 <ParentComponent>
   <ChildComponent title="Test Component" description="This is a test component we'll be using to mess around with container queries." />
