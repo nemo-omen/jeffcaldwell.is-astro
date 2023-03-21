@@ -11,7 +11,18 @@ import ParentComponent from './_ParentComponent.astro';
 
 This is some test content to make sure we're still in good shape.
 
-<FileTree />
+<FileTree tree={
+  [
+    {
+      name: '/src/content/blog/container-queries-in-astro',
+      children: [
+        {name: '_ChildComponent.astro'},
+        {name: '_ParentComponent.astro'},
+        {name: 'index.mdx'},
+      ]
+    },
+  ]
+}/>
 
 <ParentComponent>
   <ChildComponent title="Test Component" description="This is a test component we'll be using to mess around with container queries." />

@@ -45,7 +45,6 @@ function mapRecursive <T>(
 }
 </script>
 
-
 <ul>
   {#each tree as element}
     {#if element.children}
@@ -64,7 +63,6 @@ function mapRecursive <T>(
 </ul>
 
 <style>
-
 ul {
   list-style: none;
   font-family: var(--mono);
