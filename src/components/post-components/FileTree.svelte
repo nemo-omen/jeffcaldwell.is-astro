@@ -1,4 +1,6 @@
 <script lang="ts">
+export let open = true;
+
 export let tree = [
   {
     name: '/',
@@ -9,13 +11,13 @@ export let tree = [
       {
         name: 'Whatever',
         children: [
-          {name: 'Foo'},
-          {name: 'Bar'},
+          {name: 'Foo.txt'},
+          {name: 'Bar.js'},
           {
             name: 'Baz',
             children: [
-              {name: 'Blip'},
-              {name: 'Blap'}
+              {name: 'Blip.pdf'},
+              {name: 'Blap.md'}
             ]
           }
         ]
@@ -43,21 +45,37 @@ function mapRecursive <T>(
 }
 </script>
 
-<details>
+
+<ul>
   {#each tree as element}
-    <summary>{element.name}</summary>
     {#if element.children}
-      <ul>
-        {#each element.children as child}
-          <li>
-          {#if child.children}
-            <svelte:self tree={child.children} />
-          {:else}
-            {child.name}
-          {/if}
-          </li>
-          {/each}
-      </ul>
+    <li class="dir" data-filetype="dir">
+    <details {open}>
+      <summary> 🗀  {element.name}</summary>
+      <svelte:self tree={[...element.children]}/>
+    </details>
+    </li>
+    {:else}
+    <li class="file" data-filetype={element.name.slice(element.name.lastIndexOf('.') + 1)}>
+     🗎 {element.name}
+    </li>
     {/if}
   {/each}
-</details>
+</ul>
+
+<style>
+
+ul {
+  list-style: none;
+  font-family: var(--mono);
+  border-left: 2px solid hsl(var(--fg-hsl), 20%);
+}
+
+ul:not(details > ul) {
+  border-left: none;
+}
+
+summary {
+  cursor: pointer;
+}
+</style>
