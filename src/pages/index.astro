@@ -6,7 +6,16 @@ import IntroGraphic from '../components/IntroGraphic.astro';
 import Icon from '../components/Icon.astro';
 import SiteOg from '../components/SiteOg.astro';
 
-let allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
+const prod = import.meta.env.PROD;
+let allBlogPosts;
+
+if(prod) {
+  allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
+} else {
+  allBlogPosts = await getCollection('blog');
+}
+
+// let allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
 
 let allPosts = [...allBlogPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())

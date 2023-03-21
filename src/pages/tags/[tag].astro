@@ -4,11 +4,19 @@ import Layout from '../../layouts/Layout.astro';
 import  ArticleList from '../../components/ArticleList.astro';
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection('blog').then((collection) => collection.reverse());
+  const prod = import.meta.env.PROD;
+  console.log(prod);
+  let allBlogPosts;
+
+  if(prod == true) {
+    allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
+  } else {
+    allBlogPosts = await getCollection('blog');
+  }
   // console.log('allPosts: ', allPosts);
   const tags: string[] = [];
 
-  allPosts.forEach((post) => {
+  allBlogPosts.forEach((post) => {
       post.data.tags!.forEach((tag: string) => {
         tags.push(tag.toLowerCase());
       });
@@ -20,7 +28,7 @@ export async function getStaticPaths() {
       params: { tag },
       props: {
         tag,
-        blogposts: allPosts.filter((post) => post.data.tags!.map(tag => tag.toLowerCase()).includes(tag)),
+        blogposts: allBlogPosts.filter((post) => post.data.tags!.map(tag => tag.toLowerCase()).includes(tag)),
       },
     };
   });

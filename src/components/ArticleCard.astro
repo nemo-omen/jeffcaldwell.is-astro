@@ -1,11 +1,11 @@
 ---
-import { Image, Picture } from '@astrojs/image/components';
+// import { Image, Picture } from '@astrojs/image/components';
 const { data, headingLevel, url, index } = Astro.props;
 
 const { title, date, summary, image, tags } = data;
 
-const feature = await import(/* @vite-ignore */`../assets/images/${image!.src}.webp`);
-const { width, height } = feature.default;
+// const feature = await import(/* @vite-ignore */`../assets/images/${image!.src}.webp`);
+// const { width, height } = feature.default;
 const firstClass = index === 0 ? 'feature' : 'post';
 ---
   <article class={'card ' + firstClass}>
@@ -17,7 +17,7 @@ const firstClass = index === 0 ? 'feature' : 'post';
 </a>
       <p>{summary}</p>
       <div class="card-footer taglist">
-        {tags.map((tag) => <a href=`/tags/${tag}` class="tag">#{tag}</a>)}
+        {tags.map((tag) => <a href=`/tags/${tag.toLowerCase()}` class="tag">#{tag}</a>)}
       </div>
   </article>
 

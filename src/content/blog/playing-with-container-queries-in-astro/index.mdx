@@ -1,0 +1,28 @@
+---
+title: Playing With Container Queries in Astro
+summary: Container queries landed across stable browsers in February. Let's play around with them and see what we can do.
+date: 2023-03-21
+tags: ['CSS', 'ContainerQueries', 'Experiments', 'Astro']
+draft: true
+---
+import FileTree from '../../../components/post-components/FileTree.astro';
+import ChildComponent from './_ChildComponent.astro';
+import ParentComponent from './_ParentComponent.astro';
+
+This is some test content to make sure we're still in good shape.
+
+<FileTree />
+
+<ParentComponent>
+  <ChildComponent title="Test Component" description="This is a test component we'll be using to mess around with container queries." />
+  <ChildComponent title="Test Component" description="This is a test component we'll be using to mess around with container queries." />
+</ParentComponent>
+```html
+<div>
+  <h2>Test Component</h2>
+  <p>
+    This is a test component we'll be using 
+    to mess around with container queries.
+  </p>
+</div>
+```

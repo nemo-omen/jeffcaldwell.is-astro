@@ -1,5 +1,5 @@
 ---
-import { Picture} from '@astrojs/image/components';
+// import { Picture} from '@astrojs/image/components';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import BlogLayout from '../../layouts/BlogLayout.astro';
@@ -18,10 +18,10 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 // const { slug } = Astro.params;
 // const entry = await getEntryBySlug('blog', slug!);
-const { image } = entry!.data;
-const feature = await import(/* @vite-ignore */`../../assets/images/${image!.src}.webp`);
+// const { image } = entry!.data;
+// const feature = await import(/* @vite-ignore */`../../assets/images/${image!.src}.webp`);
 
-const { width, height } = feature.default;
+// const { width, height } = feature.default;
 
 const { Content } = await entry!.render();
 ---

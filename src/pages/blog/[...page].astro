@@ -6,8 +6,17 @@ import  ArticleList from '../../components/ArticleList.astro';
 import PageNav from '../../components/PageNav.astro';
 
 
+
 export async function getStaticPaths({paginate}) {
-  let allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
+  const prod = import.meta.env.PROD;
+  let allBlogPosts;
+
+  if(prod == true) {
+    allBlogPosts = await getCollection('blog', ({data}) => data.draft !== true);
+  } else {
+    allBlogPosts = await getCollection('blog');
+  }
+  // let allBlogPosts = await getCollection('blog', ({data}) => (data.draft !== true));
   let sorted = allBlogPosts.sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
   );

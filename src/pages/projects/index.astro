@@ -4,8 +4,6 @@ import Layout from '../../layouts/Layout.astro';
 import  ArticleList from '../../components/ArticleList.astro';
 
 const allProjectPosts = await getCollection('projects', (({data}) => !data.draft));
-
-// console.log(allBlogPosts);
 ---
 
 <Layout title="Jeff Caldwell | Projects" description="Jeff Caldwell is a web developer, writer, journalist, and student who makes fast, accessible websites and writes engaging docs and tutorials.">
