@@ -67,6 +67,17 @@ ul {
   list-style: none;
   font-family: var(--mono);
   border-left: 2px solid hsl(var(--fg-hsl), 20%);
+  margin: 0;
+  margin-inline: 1.25em;
+  padding: 0;
+}
+
+li {
+  padding-inline: 1em;
+}
+
+li:not(details ul li) {
+  padding-inline: 0;
 }
 
 ul:not(details > ul) {
