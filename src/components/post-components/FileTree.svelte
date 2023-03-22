@@ -1,5 +1,5 @@
 <script lang="ts">
-import 'iconify-icon';
+// import 'iconify-icon';
 import Icon from '../Icon.svelte';
 
 export let open = true;
