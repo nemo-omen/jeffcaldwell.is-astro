@@ -1,18 +1,25 @@
----
+<script lang="ts">
 import { pathsByName } from './IconPaths.js';
 
-const { name, label } = Astro.props;
+export let name;
+export let label;
 
 const paths: string[] = pathsByName[name] || [];
----
+
+</script>
+
 <svg
   aria-label={label}
   class="c"
-  viewBox="0 0 25 25"
+  viewBox="0 0 24 24"
   fill-rule="evenodd"
   clip-rule="evenodd"
 >
-{paths.map((path) => (<path d={path}></path>))}
+
+{#each paths as path}
+  <path d={path}></path>
+{/each}
+
 </svg>
 
 <style>

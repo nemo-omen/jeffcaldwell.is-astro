@@ -1,22 +1,24 @@
 ---
-title: Playing With Container Queries in Astro
-summary: Container queries landed across stable browsers in February. Let's play around with them and see what we can do.
-date: 2023-03-21
+title: Playing With Container Queries
+summary: Container queries finally landed in all stable browsers in February and I haven't had any time to play with them yet. Time to do some goofing around!
+date: 2023-03-22
 tags: ['CSS', 'ContainerQueries', 'Experiments', 'Astro']
 draft: true
 ---
 import FileTree from '../../../components/post-components/FileTree.svelte';
 import ChildComponent from './_ChildComponent.astro';
 import ParentComponent from './_ParentComponent.astro';
+import Figure from '../../../components/Figure.astro';
 
-This is some test content to make sure we're still in good shape.
+Container queries finally landed in all stable browsers in February and I haven't had any time to play with them yet. Time to do some goofing around!
 
-<figure style="font-family: var(--mono); border: 1px solid hsl(var(--fg-hsl), 30%); padding: var(--size-0);">
-<figcaption style="color: var(--secondary);">Example directory and file layout</figcaption>
+For these experiments, I made two Astro components. One that will be a parent container and one that will be its child. I stuck each of the components in the same directory as this post because I don't think I'll be needing them outside of this demo.
+
+<Figure caption="The file layout for this post">
 <FileTree tree={
   [
     {
-      name: '/src/content/blog/container-queries-in-astro',
+      name: '/playing-with-container-queries',
       children: [
         {name: '_ChildComponent.astro'},
         {name: '_ParentComponent.astro'},
@@ -25,7 +27,7 @@ This is some test content to make sure we're still in good shape.
     },
   ]
 }/>
-</figure>
+</Figure>
 
 
 <ParentComponent>

@@ -1,4 +1,7 @@
 <script lang="ts">
+import 'iconify-icon';
+import Icon from '../Icon.svelte';
+
 export let open = true;
 
 export let tree = [
@@ -49,14 +52,18 @@ function mapRecursive <T>(
   {#each tree as element}
     {#if element.children}
     <li class="dir" data-filetype="dir">
-    <details {open}>
-      <summary> 🗀  {element.name}</summary>
+    <details open>
+      <summary
+        class="{element.highlight ? 'highlight' : ''} {element.delete ? 'delete' : ''}"
+      > <span><Icon name="dir" label={element.name} /> {element.name}</span></summary>
       <svelte:self tree={[...element.children]}/>
     </details>
     </li>
     {:else}
-    <li class="file" data-filetype={element.name.slice(element.name.lastIndexOf('.') + 1)}>
-     🗎 {element.name}
+    <li 
+      class="file {element.highlight ? 'highlight' : ''} {element.delete ? 'delete' : ''}" 
+      data-filetype={element.name.slice(element.name.lastIndexOf('.') + 1)}>
+     <Icon name={element.name.slice(element.name.lastIndexOf('.') + 1)} label={element.name} /> {element.name}
     </li>
     {/if}
   {/each}
@@ -64,12 +71,16 @@ function mapRecursive <T>(
 
 <style>
 ul {
-  list-style: none;
+  /* list-style: none; */
   font-family: var(--mono);
-  border-left: 2px solid hsl(var(--fg-hsl), 20%);
+  border-inline-start: 2px solid hsl(var(--fg-hsl), 20%);
   margin: 0;
-  margin-inline: 1.25em;
+  margin-inline: .5em;
   padding: 0;
+}
+
+ul:not(li > details ul) {
+  margin-inline: 0;
 }
 
 li {
@@ -86,5 +97,32 @@ ul:not(details > ul) {
 
 summary {
   cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  display: list-item;
+}
+
+summary:hover {
+  color: var(--secondary);
+}
+
+summary, li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+summary::marker {
+  color: var(--fg);
+  display: inline-block;
+}
+
+.highlight {
+  color: var(--primary);
+}
+
+.delete {
+  text-decoration: line-through;
+  color: hsl(var(--fg-hsl), 70%);
+  /* text-decoration-thickness: 0.15ex; */
 }
 </style>

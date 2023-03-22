@@ -1,11 +1,12 @@
 ---
+import Icon from '../components/Icon.astro';
 const { file, line } = Astro.props;
 const name = file || '';
 const lineNo = line || '';
 ---
 
 <figure class="code-figure">
-  <figcaption class="code-caption">{name}</figcaption>
+  <figcaption class="code-caption"><Icon name="file" label={name} />{name}</figcaption>
   <slot />
 </figure>
 
@@ -26,13 +27,16 @@ figCaption {
   align-self: flex-end;
   border-radius: 0.25ex 0.25ex 0 0;
   font-family: var(--mono);
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
 }
 
-figcaption::before {
-  content: '🗎';
-  color: var(--fg);
-  padding: 0 0.5em 0 0;
-}
+/* figcaption::before { */
+/*   content: '🗎'; */
+/*   color: var(--fg); */
+/*   padding: 0 0.5em 0 0; */
+/* } */
 
 :global(figure .astro-code) {
   font-size: var(--size-1);

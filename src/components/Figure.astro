@@ -1,0 +1,44 @@
+---
+const { caption } = Astro.props;
+---
+
+<figure>
+  <div class="figure-wrap">
+    <slot />
+  </div>
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+figure {
+  font-family: var(--mono);
+  font-weight: 400;
+  /* border: 1px solid hsl(var(--fg-hsl), 30%); */
+  border: 1px solid var(--secondary);
+  container-type: inline-size;
+  container-name: figure;
+  display: flex;
+  flex-direction: column;
+}
+
+.figure-wrap {
+  padding: var(--size-0);
+}
+
+:global(figcaption) {
+  /* background-color: var(--secondary); */
+  color: var(--secondary);
+  font-weight: 500;
+  font-style: italic;
+  padding: 0 0.5em;
+  border-block-start: 1px solid var(--secondary);
+  /* align-self: flex-end; */
+  display: block;
+}
+
+@container figure (max-width: 600px) {
+  figure :global(*) {
+    font-size: var(--size-0);
+  }
+}
+</style>

@@ -1,0 +1,30 @@
+---
+
+---
+
+<div class="parent-component-container">
+  <h2>Parent Component</h2>
+  <slot />
+</div>
+
+<style>
+  .parent-component-container {
+    border: 1px solid hsl(var(--fg-hsl), 30%);
+    padding: var(--size-0);
+    container-type: inline-size;
+    container-name: parent-div;
+  }
+
+  @media (min-width: 800px) {
+    .parent-component-container {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--size-1);
+    }
+
+    .parent-component-container h2 {
+      grid-column: span 2;
+    }
+  }
+</style>
